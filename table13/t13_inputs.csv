@@ -1,0 +1,13 @@
+ID,Description,Application method,Slurry type,Slurry DM,Slurry pH,Slurry TAN,Slurry treatment,Application rate,TAN application rate,Incorporation,Incorporation time,Air temp.,Wind speed,,Rain rate,
+,,,,(%),,(g/kg or g/L),,(t/ha),(kg/ha),,(h),(°C),"(2 m, m/s)",,(mm/h),
+sid,descrip,app.mthd,man.source,man.dm,man.ph,man.tan,man.treat1,app.rate,TAN.app,incorp,time.incorp,air.temp,wind.2m,wind.sqrt,rain.rate,ct
+0,ref,bc,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168
+ai,Trailing hose,th,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168
+aii,Trailing shoe,ts,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168
+b,Open slot injection,os,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168
+c,Closed slot injection,cs,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168
+di,Deep incorp quick,bc,cat,6,7,1.2,none,40,48,deep,0.167,13,2.7,1.64,0,168
+dii,Shallow incorp quick,bc,cat,6,7,1.2,none,40,48,shallow,0.167,13,2.7,1.64,0,168
+diii,Deep incorp 4 h,bc,cat,6,7,1.2,none,40,48,deep,4,13,2.7,1.64,0,168
+div,Deep incorp 24 h,bc,cat,6,7,1.2,none,40,48,deep,24,13,2.7,1.64,0,168
+e,Dilution,bc,cat,2,7,1.2,none,40,48,none,,13,2.7,1.64,0,168
