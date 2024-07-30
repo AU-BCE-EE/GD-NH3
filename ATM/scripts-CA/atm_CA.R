@@ -12,6 +12,8 @@ sink('../logs/CA_R_log.txt')
   print(sessionInfo())
 sink()
 
+source('../../functions/rounddf.R')
+
 # Get weather data
 wthr <- fread('../../weather/CA/CA_Daily_weather_data.csv')
 
@@ -45,7 +47,7 @@ ggplot(wthr, aes(doy, air.temp, colour = factor(year))) + geom_line()
 # Generate inputs for 7 d emission after application on every possible day within May and July
 dat <- data.table()
 for (per in c('spring', 'summer')) {
-  if (per == 'spring') appmonth <- 4
+  if (per == 'spring') appmonth <- 5
   if (per == 'summer') appmonth <- 7
   for (i in 1:31) {
     dd <- wthr[month == appmonth & dom == i, date]
@@ -60,7 +62,7 @@ for (per in c('spring', 'summer')) {
 }
 
 # Add other fixed variables
-dat[, `:=` (app.mthd = 'bc', TAN.app = 100)]
+dat[, `:=` (app.mthd = 'bc', man.dm = 5.1, man.ph = 7.5, TAN.app = 100)]
 
 # ALFAM2 predictions
 emisvar <- alfam2(dat, conf.int = 'all', group = 'appdate', pass.col = 'appperiod')
@@ -79,7 +81,15 @@ wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m)), by = app
 
 emisci <- efvar[, .(er = mean(er), lwr = quantile(er, 0.05), upr = quantile(er, 0.95), n = .N), by = appperiod]
 
+# Two step CI by par set
+ef <- efvar[, .(er = mean(er)), by = .(appperiod, par.id)]
+efl <- dcast(ef, par.id ~ appperiod)
+efl[, rred := 100 * (1 - spring / summer)]
+
+#####
+efl[, .(lwr = quantile(rred, 0.05), upr = quantile(rred, 0.95))]
+
 # Export
-fwrite(emisave, '../output/CA_ave_emis.csv')
-fwrite(wthrave, '../output/CA_ave_weather.csv')
-fwrite(emisci, '../output/CA_emis_CI.csv')
+fwrite(rounddf(emisave, 3), '../output/CA_ave_emis.csv')
+fwrite(rounddf(wthrave, 3), '../output/CA_ave_weather.csv')
+fwrite(rounddf(emisci, 3), '../output/CA_emis_CI.csv')
