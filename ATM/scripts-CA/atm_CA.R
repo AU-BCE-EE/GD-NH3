@@ -16,6 +16,10 @@ sink()
 # Other functions
 source('../../functions/rounddf.R')
 
+# Settings
+springmonth <- 4
+summermonth <- 8
+
 # Get weather data
 wthr <- fread('../../weather/CA/CA_Daily_weather_data.csv')
 
@@ -53,8 +57,8 @@ wthr <- wthr[!year %in% badyears, ]
 # Generate inputs for 7 d emission after application on every possible day within May and July
 dat <- data.table()
 for (per in c('spring', 'summer')) {
-  if (per == 'spring') appmonth <- 4
-  if (per == 'summer') appmonth <- 7
+  if (per == 'spring') appmonth <- springmonth
+  if (per == 'summer') appmonth <- summermonth
   for (i in 1:31) {
     dd <- wthr[month == appmonth & dom == i, date]
     for (j in dd) {
@@ -106,14 +110,14 @@ fwrite(rounddf(summci, 3), '../output/CA_emis_CI.csv')
 fwrite(rounddf(wthrave, 3), '../output/CA_ave_weather.csv')
 
 # Plots
-ggplot(wthr, aes(doy, air.temp, colour = month %in% c(4, 7), group = year)) + 
+ggplot(wthr, aes(doy, air.temp, colour = month %in% c(springmonth, summermonth), group = year)) + 
   geom_line() +
   theme_bw() +
   labs(x = 'Day of year', y = expression('Air temperature'~(degree*C))) +
   theme(legend.position = 'none')
 ggsave('../plots/CA_temperature.png', height = 4, width = 5)
 
-ggplot(wthr, aes(doy, wind.2m, colour = month %in% c(5, 7), group = year)) + 
+ggplot(wthr, aes(doy, wind.2m, colour = month %in% c(springmonth, summermonth), group = year)) + 
   geom_line() +
   theme_bw() +
   labs(x = 'Day of year', y = expression('Wind speed'~(m~s^'-1'))) +
