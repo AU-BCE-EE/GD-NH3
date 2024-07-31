@@ -53,7 +53,7 @@ wthr <- wthr[!year %in% badyears, ]
 # Generate inputs for 7 d emission after application on every possible day within May and July
 dat <- data.table()
 for (per in c('spring', 'summer')) {
-  if (per == 'spring') appmonth <- 5
+  if (per == 'spring') appmonth <- 4
   if (per == 'summer') appmonth <- 7
   for (i in 1:31) {
     dd <- wthr[month == appmonth & dom == i, date]
@@ -106,7 +106,7 @@ fwrite(rounddf(summci, 3), '../output/CA_emis_CI.csv')
 fwrite(rounddf(wthrave, 3), '../output/CA_ave_weather.csv')
 
 # Plots
-ggplot(wthr, aes(doy, air.temp, colour = month %in% c(5, 7), group = year)) + 
+ggplot(wthr, aes(doy, air.temp, colour = month %in% c(4, 7), group = year)) + 
   geom_line() +
   theme_bw() +
   labs(x = 'Day of year', y = expression('Air temperature'~(degree*C))) +
@@ -124,5 +124,5 @@ ggplot(predf, aes(er, fill = appperiod)) +
   geom_histogram() +
   facet_wrap(~year) +
   theme_bw() +
-  labs(x = 'Emission (frac. TAN)', y = 'Count', fill = 'Application period') +
+  labs(x = 'Emission (frac. TAN)', y = 'Count', fill = 'Application period') 
 ggsave('../plots/CA_emis_hist.png', height = 5, width = 10)
