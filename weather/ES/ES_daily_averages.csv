@@ -1,4 +1,5 @@
 IdProvincia;IdEstacion;Fecha;Año;Dia;Temp Media (ºC);Temp Max (ºC);Hora Temp Max;Temp Mínima (ºC);Hora Temp Min;Humedad Media (%);Humedad Max (%);Hora Hum Max;Humedad Min (%);Hora Hum Mín;Velviento (m/s);DirViento (º);VelVientoMax (m/s);Hora VelMax;Dir viento Vel Max (º);Radiación (MJ/m2);Precipitación (mm);PePMon;EtPMon;Temp Suelo 10 cm (ºC);Temp Suelo 30 cm (ºC),,,,,,,,,,,,,,,,
+province;station;date;year;day;tempave;tempmax;hourtempmax;tempmin;hourtempmin;rhave;rhmax;hourrhmax;rhmin;hourrhmin;wind;winddir;windmax;hourwindmax;dirmax;rad;precip;pepmon;etpmon;tempsoil10;tempsoil30
 28;3;01-06-2023;2023;152;18,26;26,83;12:50;12,96;05:20;72,8;94,5;21:00;33,65;12:40;0,84;34,33;6,82;13:25;204,4;19,02;4,26;1,25;3,84;22,1;21,24
 28;3;02-06-2023;2023;153;18,03;25,95;17:30;12,47;05:00;76;95,9;05:00;35,67;16:30;0,78;49,09;5,89;17:47;94;23,49;5,48;2,25;4,27;21,98;21,28,,
 28;3;03-06-2023;2023;154;19,17;27,36;16:00;11,57;05:00;70,9;97,8;05:00;32,7;15:50;0,87;29,71;6,2;18:19;124,7;26,23;1,01;0;4,8;22,41;21,38,
