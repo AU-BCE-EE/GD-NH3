@@ -53,8 +53,8 @@ wthr <- wthr[!year %in% badyears, ]
 
 #ct <- wthr[, .N, by = year]
 
-# Two input data sets: May and July
-# Generate inputs for 7 d emission after application on every possible day within May and July
+# Two input data sets: April and July
+# Generate inputs for 7 d emission after application on every possible day within April and July
 dat <- data.table()
 for (per in c('spring', 'summer')) {
   if (per == 'spring') appmonth <- springmonth
