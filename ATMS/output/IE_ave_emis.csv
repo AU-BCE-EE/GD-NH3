@@ -1,3 +1,2 @@
-period,er,sd,min,max,n,red
-dry,0.64,0.033,0.43,0.696,575,0.187
-rainy,0.521,0.16,0.068,0.685,60,0.187
+er.rainy,er.dry,er.overall,sd.rainy,sd.overall,n.rainy,n.overall,rred
+0.459,0.642,0.622,0.159,0.082,17,155,26.206

@@ -17,13 +17,12 @@ sink()
 source('../../functions/rounddf.R')
 
 # Settings
-# Cutoff for rainfall (mm) between rainstart and rainend
+# Cutoff for rainfall (mm) between apptime and rainend
 appmonth <- 5
-raincutoff <- 4
+raincutoff <- 2
 apptime <- 9
-rainstart <- 9
-# Change rainend??? To 9 + 6 hours
-rainend <- 21
+# Look at rain in first 6 hours after application
+rainend <- 15
 
 # Get weather data
 wthr <- fread('../../weather/IE/moorepark_weather.csv')
@@ -52,14 +51,17 @@ wthr <- wthr[!is.na(air.temp + wind.2m + rain.rate) & month %in% c(appmonth, app
 ct <- wthr[, .N, by = year]
 ct
 
-# Years with missing days
-badyears <- ct[N < 744, year]
+# Years with missing hours ((31 + 30) * 24 = 1464 expected)
+badyears <- ct[N < 1464, year]
 
 # Remove years with missing values
 wthr <- wthr[!year %in% badyears, ]
 
 ct <- wthr[, .N, by = year]
 ct
+
+# Take just most recent 5 years
+wthr <- wthr[year %in% 2020:2024, ]
 
 # Inputs, application on every day in weather data
 dat <- data.table()
@@ -75,7 +77,7 @@ for (i in 1:31) {
 }
 
 # Get total rain
-raintot <- wthr[hr >= rainstart & hr <= rainend, .(rain = sum(rain)), by = .(date, year, doy)]
+raintot <- wthr[hr >= apptime & hr <= rainend, .(rain = sum(rain)), by = .(date, year, doy)]
 quantile(raintot[, rain])
 hist(raintot$rain)
 raindates <- raintot[rain >= raincutoff, date]
@@ -85,6 +87,8 @@ drydates <- raintot[rain < raincutoff, date]
 # Linked to application date, not just date
 dat[appdate %in% raindates, period := 'rainy']
 dat[appdate %in% drydates, period := 'dry']
+
+table(dat$period)
 
 # Add other fixed variables
 dat[, `:=` (app.mthd = 'bc', man.dm = 6.6, man.ph = 7.9, TAN.app = 100)]
@@ -104,20 +108,23 @@ predf <- pred[ct == 168, ]
 predvarf <- predvar[ct == 168, ]
 
 # Two step CI by par set
-pci <- predvarf[, .(er = mean(er)), by = .(period, par.id)]
-# Reshape for reduction calc
-pcil <- dcast(pci, par.id ~ period, value.var = 'er')
+pci <- predvarf[, .(er.rainy = mean(er[period == 'rainy']), er.dry = mean(er[period == 'dry']), 
+                    er.overall = mean(er), sd.rainy = sd(er[period == 'rainy']), 
+                    sd.overall = sd(er), n.rainy = sum(period == 'rainy'), n.overall = .N), by = par.id]
 # Relative reduction
-pcil[, rred := 100 * (1 - rainy / dry)]
-summci <- pcil[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
+pci[, rred := 100 * (1 - er.rainy / er.overall)]
+summci <- pci[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
 
 # Summary with par set 3
-summ <- predf[, .(er = mean(er), sd = sd(er), min = min(er), max = max(er), n = .N), by = period]
-redave <- -diff(summ[, er]) / max(summ[, er])
-summ[, red := redave]
+summ <- predf[, .(er.rainy = mean(er[period == 'rainy']), er.dry = mean(er[period == 'dry']), 
+                   er.overall = mean(er), sd.rainy = sd(er[period == 'rainy']), 
+                   sd.overall = sd(er), n.rainy = sum(period == 'rainy'), n.overall = .N)]
+summ[, rred := 100 * (1 - er.rainy / er.overall)]
 
 # Weather averages
-wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate)), by = period]
+wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate), 
+                   rain.6 = mean(rain.rate[ct <= 6] * 1) * 6, rain.24 = mean(rain.rate[ct <= 24] * 1) * 24, 
+                   rain.tot = sum(rain.rate * 1) / length(unique(appdate))), by = period]
 
 # Export
 fwrite(rounddf(summ, 3), '../output/IE_ave_emis.csv')
@@ -125,19 +132,30 @@ fwrite(rounddf(summci, 3), '../output/IE_emis_CI.csv')
 fwrite(rounddf(wthrave, 3), '../output/IE_ave_weather.csv')
 
 # Plots
-ggplot(wthr, aes(doy, air.temp, group = year)) + 
+names(wthr)
+ggplot(wthr, aes(date.time, air.temp, group = year)) + 
   geom_line() +
   theme_bw() +
+  facet_wrap(~ year, scale = 'free_x') +
   labs(x = 'Day of year', y = expression('Air temperature'~(degree*C))) +
   theme(legend.position = 'none')
 ggsave('../plots/IE_temperature.png', height = 4, width = 5)
 
-ggplot(wthr, aes(doy, wind.2m, group = year)) + 
+ggplot(wthr, aes(date.time, wind.2m, group = year)) + 
   geom_line() +
   theme_bw() +
+  facet_wrap(~ year, scale = 'free_x') +
   labs(x = 'Day of year', y = expression('Wind speed'~(m~s^'-1'))) +
   theme(legend.position = 'none')
 ggsave('../plots/IE_wind.png', height = 4, width = 5)
+
+ggplot(wthr, aes(date.time, rain.rate, group = year)) + 
+  geom_point() +
+  theme_bw() +
+  facet_wrap(~ year, scale = 'free_x') +
+  labs(x = 'Day of year', y = expression('Rainfall rate'~(mm~s^'-1'))) +
+  theme(legend.position = 'none')
+ggsave('../plots/IE_rain.png', height = 4, width = 5)
 
 ggplot(predf, aes(er, fill = period)) +
   geom_histogram() +
