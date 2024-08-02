@@ -22,27 +22,32 @@ morning <- 9
 evening <- 21
 
 # Get weather data
-wthr <- fread('../../weather/DK/weather_10km_624_54.csv')
+#wthr <- fread('../../weather/DK/weather_10km_624_54.csv')
+wthr <- fread('../../weather/DK/550649980.csv', na.strings = 'null')
 
 # Sort out weather time
+wthr[, date.time := as.POSIXct(paste0(date, time, ':00'), format = '%d/%m/%Y %H:%M')]
 wthr[, date := as.Date(date.time)]
 wthr[, year := as.integer(format(date, format = '%Y'))]
 wthr[, month := as.integer(format(date, format = '%m'))]
+wthr[, month.day := format(date, format = '%m-%d')]
 wthr[, dom := as.integer(format(date, format = '%d'))]
 wthr[, doy := as.integer(format(date, format = '%j'))]
 wthr[, hr := as.integer(format(date.time, format = '%H'))]
 
 # Get DMI data
-wthr[, `:=` (air.temp = air.temp.dmi, wind.2m = wind.2m.dmi, wind.sqrt = sqrt(wind.2m.dmi), rain.rate = rain.1h.dmi / 1)]
+wthr[, `:=` (air.temp = metp, wind.2m = wv2, wind.sqrt = sqrt(wv2), rain.rate = prec / 1)]
 
 # Subset with required variables
 wthr <- wthr[!is.na(air.temp + wind.2m + rain.rate) & month %in% c(appmonth, appmonth + 1), 
-             .(date.time, date, hr, year, month, dom, doy, air.temp, wind.2m, wind.sqrt, rain.rate)]
+             .(date.time, date, hr, year, month, month.day, dom, doy, air.temp, wind.2m, wind.sqrt, rain.rate)]
 
 # Check for missing values
 # Expect 24 values per day
-ct <- wthr[, .N, by = doy]
+ct <- wthr[, .N, by = .(year, doy)]
 ct
+
+table(wthr$month.day, wthr$year)
 
 # Inputs, application on every day in weather data
 dat <- data.table()
@@ -54,7 +59,7 @@ for (i in 1:30) {
     for (j in dd) {
       j <- as.POSIXct(j)
       ddd <- wthr[difftime(date.time, j, units = 'hours') <= 168 & difftime(date.time, j, units = 'hours') >= 0, ]
-      ddd[, `:=` (appdatetime = j, period = p)]
+      ddd[, `:=` (appdate = as.Date(j), appdatetime = j, period = p)]
       ddd[, ct := as.numeric(difftime(date.time, j, units = 'hours'))]
       dat <- rbind(dat, ddd)
     }
@@ -66,9 +71,9 @@ dat[, `:=` (man.source = 'digestate', app.mthd = 'bsth', man.dm = 5.9, man.ph = 
 
 # ALFAM2 predictions
 # With set 3
-pred <- alfam2(dat, group = 'appdatetime', pass.col = c('year', 'period'))
+pred <- alfam2(dat, group = 'appdatetime', pass.col = c('appdate', 'year', 'period'))
 # With bootstrap sets
-predvar <- alfam2(dat, conf.int = 'all', group = 'appdatetime', pass.col = c('year', 'period'))
+predvar <- alfam2(dat, conf.int = 'all', group = 'appdatetime', pass.col = c('appdate', 'year', 'period'))
 
 # Change to data table for next steps
 setDT(pred)
@@ -78,13 +83,19 @@ setDT(predvar)
 predf <- pred[ct == 168, ]
 predvarf <- predvar[ct == 168, ]
 
-# Two step CI by par set
-pci <- predvarf[, .(er = mean(er)), by = .(period, par.id)]
-# Reshape for reduction calc
-pcil <- dcast(pci, par.id ~ period, value.var = 'er')
-# Relative reduction
-pcil[, rred := 100 * (1 - evening / morning)]
-summci <- pcil[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
+## Two step CI by par set
+#pci <- predvarf[, .(er = mean(er)), by = .(period, par.id)]
+## Reshape for reduction calc
+#pcil <- dcast(pci, par.id ~ period, value.var = 'er')
+## Relative reduction
+#pcil[, rred := 100 * (1 - evening / morning)]
+#summci <- pcil[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
+
+# Single step CI with pairing by app day
+pvfl <- dcast(predvarf, appdate + par.id ~ period, value.var = 'er')
+pvfl[, rred := 100 * (1 - evening / morning)]
+pvfl <- pvfl[!is.na(rred), ]
+summci <- pvfl[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
 
 # Summary with par set 3
 summ <- predf[, .(er = mean(er), sd = sd(er), min = min(er), max = max(er), n = .N), by = period]
@@ -107,7 +118,7 @@ ggplot(dat, aes(doy, air.temp, group = year)) +
   theme(legend.position = 'none')
 ggsave('../plots/DK_temperature.png', height = 4, width = 5)
 
-ggplot(wthr, aes(doy, wind.2m, group = year)) + 
+ggplot(wthr, aes(date.time, wind.2m, group = year)) + 
   geom_line() +
   theme_bw() +
   labs(x = 'Day of year', y = expression('Wind speed'~(m~s^'-1'))) +
