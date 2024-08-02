@@ -37,7 +37,7 @@ wthr[, `:=` (air.temp = Tavg, wind.2m = WindSpd * log(2 / 0.01) / log(10 / 0.01)
 wthr[, `:=` (wind.sqrt = sqrt(wind.2m), rain.rate = Rain / 24)]
 
 # Subset with required variables
-wthr <- wthr[!is.na(air.temp + wind.2m + rain.rate) & month %in% c(3, 4, 5, 6, 7, 8), 
+wthr <- wthr[!is.na(air.temp + wind.2m + rain.rate) & month %in% c(3, 4, 5, 6, 7, 8, 9), 
              .(date, year, month, dom, doy, air.temp, wind.2m, wind.sqrt, rain.rate)]
 
 # Check for missing values

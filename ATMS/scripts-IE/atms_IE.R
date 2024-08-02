@@ -22,6 +22,7 @@ appmonth <- 5
 raincutoff <- 4
 apptime <- 9
 rainstart <- 9
+# Change rainend??? To 9 + 6 hours
 rainend <- 21
 
 # Get weather data
