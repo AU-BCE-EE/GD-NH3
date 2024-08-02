@@ -1,3 +1,2 @@
-period,er,sd,min,max,n,red
-low,0.143,0.015,0.117,0.156,5,0.175
-high,0.173,0.005,0.159,0.185,55,0.175
+er.low,er.high,er.overall,sd.low,sd.overall,n.low,n.overall,rred
+0.143,0.173,0.171,0.015,0.011,5,60,16.268

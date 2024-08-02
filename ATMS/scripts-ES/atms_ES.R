@@ -18,6 +18,7 @@ source('../../functions/rounddf.R')
 
 # Settings
 appmonth <- 6
+# Take application days with 24 hour emission at least 10% lower than overall average
 cutoff <- 0.90
 apptime <- 9
 
@@ -53,7 +54,7 @@ for (i in 1:30) {
   for (j in dd) {
     j <- as.POSIXct(j)
     ddd <- wthr[difftime(date, j, units = 'hours') <= 168 & difftime(date, j, units = 'hours') >= 0, ]
-    ddd[, `:=` (appdate = as.Date(j))]
+    ddd[, `:=` (appdate = as.POSIXct(j))]
     ddd[, ct := as.numeric(difftime(date, j, units = 'hours'))]
     dat <- rbind(dat, ddd)
   }
@@ -73,6 +74,8 @@ pred1f[, period := ifelse(er <= (cutoff * mean(er)), 'low', 'high')]
 
 # Add period to main input data frame
 dat <- merge(dat, pred1f[, .(appdate, period)], by = 'appdate')
+# And add to weather for plotting
+wthr <- merge(wthr, pred1f[, .(appdate, period)], by.x = 'date', by.y = 'appdate')
 
 # ALFAM2 predictions for 168 hours
 # With set 3
@@ -89,17 +92,18 @@ predf <- pred[ct == 168, ]
 predvarf <- predvar[ct == 168, ]
 
 # Two step CI by par set
-pci <- predvarf[, .(er = mean(er)), by = .(period, par.id)]
-# Reshape for reduction calc
-pcil <- dcast(pci, par.id ~ period, value.var = 'er')
+pci <- predvarf[, .(er.low = mean(er[period == 'low']), er.high = mean(er[period == 'high']), 
+                    er.overall = mean(er), sd.low = sd(er[period == 'low']), 
+                    sd.overall = sd(er), n.low = sum(period == 'low'), n.overall = .N), by = par.id]
 # Relative reduction
-pcil[, rred := 100 * (1 - low / high)]
-summci <- pcil[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
+pci[, rred := 100 * (1 - er.low / er.overall)]
+summci <- pci[, .(lwr = quantile(rred, 0.05), mn = mean(rred), md = median(rred), upr = quantile(rred, 0.95))]
 
 # Summary with par set 3
-summ <- predf[, .(er = mean(er), sd = sd(er), min = min(er), max = max(er), n = .N), by = period]
-redave <- diff(summ[, er]) / max(summ[, er])
-summ[, red := redave]
+summ <- predf[, .(er.low = mean(er[period == 'low']), er.high = mean(er[period == 'high']), 
+                   er.overall = mean(er), sd.low = sd(er[period == 'low']), 
+                   sd.overall = sd(er), n.low = sum(period == 'low'), n.overall = .N)]
+summ[, rred := 100 * (1 - er.low / er.overall)]
 
 # Weather averages
 wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate)), by = period]
@@ -110,19 +114,29 @@ fwrite(rounddf(summci, 3), '../output/ES_emis_CI.csv')
 fwrite(rounddf(wthrave, 3), '../output/ES_ave_weather.csv')
 
 # Plots
-ggplot(dat, aes(doy, air.temp, group = year)) + 
-  geom_line() +
+ggplot(wthr, aes(doy, air.temp, group = year, colour = period)) + 
+  geom_line(colour = 'gray75') +
+  geom_point(size = 2) +
   theme_bw() +
-  labs(x = 'Day of year', y = expression('Air temperature'~(degree*C))) +
-  theme(legend.position = 'none')
+  labs(x = 'Day of year', y = expression('Air temperature'~(degree*C)), colour = '24 h emission potential') +
+  theme(legend.position = 'top')
 ggsave('../plots/ES_temperature.png', height = 4, width = 5)
 
-ggplot(wthr, aes(doy, wind.2m, group = year)) + 
-  geom_line() +
+ggplot(wthr, aes(doy, wind.2m, group = year, colour = period)) + 
+  geom_line(colour = 'gray75') +
+  geom_point(size = 2) +
   theme_bw() +
-  labs(x = 'Day of year', y = expression('Wind speed'~(m~s^'-1'))) +
+  labs(x = 'Day of year', y = expression('Wind speed'~(m~s^'-1')), colour = 'Year') +
   theme(legend.position = 'none')
 ggsave('../plots/ES_wind.png', height = 4, width = 5)
+
+ggplot(wthr, aes(doy, rain.rate, group = year, colour = period)) + 
+  geom_line(colour = 'gray75') +
+  geom_point(size = 2) +
+  theme_bw() +
+  labs(x = 'Day of year', y = expression('Rainfall rate'~(mm~s^'-1')), colour = 'Year') +
+  theme(legend.position = 'none')
+ggsave('../plots/ES_rain.png', height = 4, width = 5)
 
 ggplot(predf, aes(er, fill = period)) +
   geom_histogram() +
