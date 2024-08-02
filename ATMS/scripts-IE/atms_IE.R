@@ -60,8 +60,9 @@ wthr <- wthr[!year %in% badyears, ]
 ct <- wthr[, .N, by = year]
 ct
 
-# Take just most recent 5 years
-wthr <- wthr[year %in% 2020:2024, ]
+# Take just most recent 4 years
+# Omit 2020 because it has no rainy days
+wthr <- wthr[year %in% 2021:2024, ]
 
 # Inputs, application on every day in weather data
 dat <- data.table()
@@ -79,7 +80,7 @@ for (i in 1:31) {
 # Get total rain
 raintot <- wthr[hr >= apptime & hr <= rainend, .(rain = sum(rain)), by = .(date, year, doy)]
 quantile(raintot[, rain])
-hist(raintot$rain)
+
 raindates <- raintot[rain >= raincutoff, date]
 drydates <- raintot[rain < raincutoff, date]
 
@@ -124,7 +125,8 @@ summ[, rred := 100 * (1 - er.rainy / er.overall)]
 # Weather averages
 wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate), 
                    rain.6 = mean(rain.rate[ct <= 6] * 1) * 6, rain.24 = mean(rain.rate[ct <= 24] * 1) * 24, 
-                   rain.tot = sum(rain.rate * 1) / length(unique(appdate))), by = period]
+                   rain.tot = sum(rain.rate * 1) / length(unique(appdate)),
+                   yr.min = min(year), yr.max = max(year), n.yr = length(unique(year))), by = period]
 
 # Export
 fwrite(rounddf(summ, 3), '../output/IE_ave_emis.csv')

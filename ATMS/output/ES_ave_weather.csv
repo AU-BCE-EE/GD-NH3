@@ -1,3 +1,2 @@
-period,air.temp,wind.2m,rain.rate
-low,21.497,0.738,0.078
-high,23.502,0.743,0.037
+air.temp,wind.2m,rain.rate,air.temp.low,wind.2m.low,rain.rate.low,air.temp.high,wind.2m.high,rain.rate.high,yr.min,yr.max,n.yr
+22.728,0.739,0.047,21.676,0.838,0.057,22.824,0.73,0.046,2023,2024,2

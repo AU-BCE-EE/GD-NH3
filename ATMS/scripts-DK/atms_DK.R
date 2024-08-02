@@ -1,4 +1,4 @@
-# ALFAM2 predictions of application timing effect for Spain
+# ALFAM2 predictions of application timing effect for Denmark
 
 # Clear workspace
 rm(list = ls())
@@ -103,7 +103,15 @@ redave <- - diff(summ[, er]) / max(summ[, er])
 summ[, red := redave]
 
 # Weather averages
-wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate)), by = period]
+wthrave <- wthr[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate), 
+                    air.temp.evening = mean(air.temp[hr >= evening | hr <= morning]), 
+                    wind.2m.evening = mean(wind.2m[hr >= evening | hr <= morning]), 
+                    rain.rate.evening = mean(rain.rate[hr >= evening | hr <= morning]),
+                    air.temp.morning = mean(air.temp[hr <= evening | hr >= morning]), 
+                    wind.2m.morning = mean(wind.2m[hr <= evening | hr >= morning]), 
+                    rain.rate.morning = mean(rain.rate[hr <= evening | hr >= morning]),
+                    yr.min = min(year), yr.max = max(year), n.yr = length(unique(year)))]
+
 
 # Export
 fwrite(rounddf(summ, 3), '../output/DK_ave_emis.csv')

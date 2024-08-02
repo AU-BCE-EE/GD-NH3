@@ -106,7 +106,14 @@ summ <- predf[, .(er.low = mean(er[period == 'low']), er.high = mean(er[period =
 summ[, rred := 100 * (1 - er.low / er.overall)]
 
 # Weather averages
-wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate)), by = period]
+wthrave <- wthr[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), rain.rate = mean(rain.rate), 
+                    air.temp.low = mean(air.temp[period == 'low']), 
+                    wind.2m.low = mean(wind.2m[period == 'low']), 
+                    rain.rate.low = mean(rain.rate[period == 'low']),
+                    air.temp.high = mean(air.temp[period == 'high']), 
+                    wind.2m.high = mean(wind.2m[period == 'high']), 
+                    rain.rate.high = mean(rain.rate[period == 'high']),
+                    yr.min = min(year), yr.max = max(year), n.yr = length(unique(year)))]
 
 # Export
 fwrite(rounddf(summ, 3), '../output/ES_ave_emis.csv')

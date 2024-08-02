@@ -102,7 +102,8 @@ redave <- diff(summ[, er]) / max(summ[, er])
 summ[, red := redave]
 
 # Weather averages
-wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m)), by = appperiod]
+wthrave <- dat[, .(air.temp = mean(air.temp), wind.2m = mean(wind.2m), yr.min = min(year), 
+                   yr.max = max(year), n.yr = length(unique(year))), by = appperiod]
 
 # Export
 fwrite(rounddf(summ, 3), '../output/CA_ave_emis.csv')
