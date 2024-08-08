@@ -61,7 +61,7 @@ for (i in 1:30) {
 }
 
 # Add some fixed variables
-dat[, `:=` (man.source = 'pig', app.mthd = 'bc', man.dm = 2.6, man.ph = 7.4, TAN.app = 100)]
+dat[, `:=` (man.source = 'pig', app.mthd = 'ts', man.dm = 2.6, man.ph = 7.4, TAN.app = 100)]
 
 # Take a 1 day dataset for prediction and selection
 dat1 <- dat[ct <= 24, ]
