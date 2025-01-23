@@ -1,9 +1,16 @@
 
-# calculating the average reduction pr ref and treat combination   ### OBS is it 'red2' that should be used? There is also a 'red' in the df
-df$red.2 <- as.numeric(df$red.2)
-dfsumm <- df[, .(red.avg = mean(red.2), 
-                 red.sd = sd(red.2), 
-                 study.no = length(unique(study.num)))]
+df$r <- as.numeric(df$r)
+df$pHr <- as.numeric(df$pH.u) - as.numeric(df$pH.a)
 
+# calculating the average reduction pr ref 
+dfsumm <- df[, .(red.avg = mean(r), 
+                 red.sd = sd(r), 
+                 pH.red.avg = mean(pHr), 
+                 pH.red.sd = sd(pHr)) 
+                 , by = ID]
 
-# Compared with ranges from Fanguerio et al., 2015? 
+dfsumm <- df[, .(red.avg = mean(r), 
+                 red.sd = sd(r), 
+                 pH.red.avg = mean(na.omit(pHr)), 
+                 pH.red.sd = sd(na.omit(pHr)), 
+                 study.no = length(unique(ID)))]

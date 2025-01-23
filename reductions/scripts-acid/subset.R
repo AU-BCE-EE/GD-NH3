@@ -1,4 +1,4 @@
 
 # data frame for acidification 
-df <- df[additive.class %in% c('acid', 'Acid')]
+df1 <- df1[additive.class %in% c('acid', 'Acid')]
 
