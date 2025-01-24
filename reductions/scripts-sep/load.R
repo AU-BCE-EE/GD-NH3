@@ -1,10 +1,3 @@
 
-# new studies
-org <- read_excel('../data/lit_dat.xlsx', 2)
-df <- org
-df <- as.data.table(df)
+dat <- as.data.frame(read_xlsx('../data/separation_dat_Pedersen2022.xlsx', sheet = 1, skip = 2, na = 'NA'))
 
-
-# studies from 2014 GD 
-orgOld <- read_excel('../data/data_2014.xlsx', 2)
-dfOld <- orgOld
