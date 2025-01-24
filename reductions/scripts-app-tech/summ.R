@@ -8,4 +8,3 @@ dfsumm <- df[, .(red.avg = mean(red.2),
                  red.sd = sd(red.2), 
                  study.no = length(unique(study.num)))
              , by = list(com)]
-
