@@ -14,7 +14,7 @@ sink('../logs/IE_R_log.txt')
 sink()
 
 # Other functions
-source('../../functions/rounddf.R')
+source('../../../functions/rounddf.R')
 
 # Settings
 # Cutoff for rainfall (mm) between apptime and rainend

@@ -14,7 +14,7 @@ sink('../logs/DK_R_log.txt')
 sink()
 
 # Other functions
-source('../../functions/rounddf.R')
+source('../../../functions/rounddf.R')
 
 # Settings
 appmonth <- 4

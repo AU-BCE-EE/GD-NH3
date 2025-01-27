@@ -14,7 +14,7 @@ sink('../logs/CA_R_log.txt')
 sink()
 
 # Other functions
-source('../../functions/rounddf.R')
+source('../../../functions/rounddf.R')
 
 # Settings
 springmonth <- 4
