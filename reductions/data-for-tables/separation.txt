@@ -1,0 +1,10 @@
+Separation 
+
+As the new literature search only had a few observations with liquid fraction, it was chosen to use the database collected in Pedersen et al. (2022).
+
+Pedersen et al. (2022): Pedersen, J., Hafner, S. D., Adamsen, A. P. S. 2022. Effectiveness of mechanical separation for reducing ammonia loss from field-applied slurry: Assessment through iterature review and model calculations. Journal of Environmental Management 323. 116196. https://doi.org/10.1016/j.jenvman.2022.116196
+Database from Pedersen et al. (2022): ../data/separation_dat_Pedersen2022.xlsx
+Scripts for calculations: ../scripts-sep. 'main.R' calls the other scripts
+Output: ../output/df.separation.csv
+
+The reduction obtained by separation added to he table is a mean reduction when applying the liquid fraction after separation compared to the unseparated slurry or digestate. Emissions from the solid fraction is not included. 

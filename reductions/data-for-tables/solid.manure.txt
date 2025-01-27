@@ -1,0 +1,8 @@
+Solid manure
+
+Only two new studies (5 observations in total) were identified in the literature search 
+All new literature: ../data/lit_dat.xlsx.
+Studies with solid manure applied by different techniques: ../output/df.solid.csv. 
+Scripts to filter the data to get df.solid.csv from lit_dat.xlsx: ../scripts. The script 'main.R' runs the rest. 
+The reductions in these studies are in line with the GD from 2014, therefore, we did not find that there was evidence to change these. 
+The numbers from the 2014 GD are used in this revised version without any changes. 

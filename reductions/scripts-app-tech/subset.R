@@ -13,3 +13,9 @@ df <- df[df$additive.class == 'n/a' | is.na(df$additive.class), ]
 
 # overview of data 
 table(df$app.ref2, df$app.treat.general)
+
+
+
+# table for solid data 
+df.solid <- df[df$man.tex == 'Solid', ]
+

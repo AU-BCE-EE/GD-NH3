@@ -1,0 +1,12 @@
+Acidification 
+
+The database was used and filtered for observations with acidification. As acidification was not a Category 1 technique in the GD in 2014, there is no data on acidification in the literature summary from 2014. Therefore, additional data from studies older than 2012 was included.
+
+Database: ../data/lit_dat.xlsx
+Search key etc. for the database: ../data/database_info.txt
+Additional acidification data: ../data/acidification_data_extra.xlsx
+Literature summary from 2014: ../data/data_2014.xlsx and ../SpreadRev_Summ.docx and ../data/SpreadRev_Tabs.docx
+Scripts for calculations: ../scripts-acid. 'main.R' calls the other scripts. 
+Output: ../output/df.acidification.csv. 
+
+The reduction obtained by acidification added to he table is a mean reduction from all the studies. 
