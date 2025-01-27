@@ -1,5 +1,7 @@
 Information about the database 
 
+The database: ../data/lit_dat.xlsx
+
 The literature search was done the XXXXX
 The following search key was used: YYYYYY at ZZZZZZ 
 As the GD from 2014 contain literature from 2012 and earlier, only literature from 2012 and later was included. 
@@ -8,4 +10,4 @@ A total of XX results was screened for.... description of the screening/filterin
 
 Data from the studies were entered into the excel sheet. 
 
-A few additional studies on separation () were included for completeness, see more info in the file ../data-for-tables/acidification.txt
+A few additional studies on separation (study no 57-61) were included for completeness, see more info in the file ../data-for-tables/acidification.txt

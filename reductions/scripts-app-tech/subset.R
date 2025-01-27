@@ -16,6 +16,10 @@ table(df$app.ref2, df$app.treat.general)
 
 
 
+# table for incorporation of liquid manure
+df.incorp.liq <- df[df$app.treat.general == 'broadcast / incorporation' & df$man.tex == 'Liquid', ]
+
+
 # table for solid data 
 df.solid <- df[df$man.tex == 'Solid', ]
 

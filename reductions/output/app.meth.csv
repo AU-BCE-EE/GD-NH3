@@ -1,7 +1,11 @@
 "","com","red.avg","red.sd","study.no"
-"1","surface broadcast - injection",75.6620962899428,33.5422244128025,11
-"2","banding - injection",30.4441486196792,25.3656745030246,6
-"3","surface broadcast - broadcast / incorporation",59.3811520040167,16.9677554556817,7
-"4","surface broadcast - banding",22.8529270626668,57.5982565878968,5
-"5","banding - Trailing shoe",18.5901615870209,19.6776458078451,3
-"6","surface broadcast - Trailing shoe",32.021294169537,39.0922234106667,1
+"1","surface broadcast - closed slot injection",88.5438567706021,16.7514009135756,5
+"2","surface broadcast - broadcast / incorporation",61.9135800037657,19.2697208604457,8
+"3","surface broadcast - open slot injection",62.4081904389469,41.5348363848433,5
+"4","surface broadcast - Banded / aeration",43.7443089691844,22.8434742815288,6
+"5","surface broadcast - banding",22.8529270626668,57.5982565878968,5
+"6","banding - open slot injection",24.9396475578939,21.0006502694414,3
+"7","banding - Trailing shoe",18.5901615870209,19.6776458078451,3
+"8","surface broadcast - Trailing shoe",32.021294169537,39.0922234106667,1
+"9","surface broadcast - broadcast / aeration",36.5677166400851,17.9592517208014,2
+"10","banding - Banded / aeration",48.3597493549576,NA,1
