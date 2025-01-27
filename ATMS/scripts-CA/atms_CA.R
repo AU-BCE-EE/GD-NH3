@@ -21,7 +21,7 @@ springmonth <- 4
 summermonth <- 8
 
 # Get weather data
-wthr <- fread('../../weather/CA/CA_Daily_weather_data.csv')
+wthr <- fread('../weather/CA/CA_Daily_weather_data.csv')
 
 # Sort out weather time
 wthr[, date := as.Date(as.POSIXct(Date, format = '%Y-%m-%d %H:%M:%S'))]

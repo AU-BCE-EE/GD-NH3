@@ -23,7 +23,7 @@ cutoff <- 0.90
 apptime <- 9
 
 # Get weather data
-wthr <- fread('../../weather/ES/ES_daily_averages.csv', sep = ';', dec = ',', skip = 1)
+wthr <- fread('../weather/ES/ES_daily_averages.csv', sep = ';', dec = ',', skip = 1)
 
 # Sort out weather time
 wthr[, date := as.POSIXct(date, format = '%d-%m-%Y')]

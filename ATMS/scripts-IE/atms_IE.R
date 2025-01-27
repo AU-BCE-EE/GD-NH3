@@ -25,7 +25,7 @@ apptime <- 9
 rainend <- 15
 
 # Get weather data
-wthr <- fread('../../weather/IE/moorepark_weather.csv')
+wthr <- fread('../weather/IE/moorepark_weather.csv')
 
 # Sort out weather time
 wthr[, date.time := as.POSIXct(date, format = '%m/%d/%Y %H:%M')]

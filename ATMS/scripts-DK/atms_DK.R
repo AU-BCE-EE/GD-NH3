@@ -22,8 +22,7 @@ morning <- 9
 evening <- 21
 
 # Get weather data
-#wthr <- fread('../../weather/DK/weather_10km_624_54.csv')
-wthr <- fread('../../weather/DK/550649980.csv', na.strings = 'null')
+wthr <- fread('../weather/DK/550649980.csv', na.strings = 'null')
 
 # Sort out weather time
 wthr[, date.time := as.POSIXct(paste0(date, time, ':00'), format = '%d/%m/%Y %H:%M')]
