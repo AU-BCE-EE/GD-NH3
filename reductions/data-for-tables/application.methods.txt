@@ -1,0 +1,11 @@
+Application methods 
+
+Data from the new literature compilation were used to calculate average reductions of the different application techniques compared to broadcast and band applied slurry. 
+Two additional older studies (study no 62 and 63) with data from mechanically assisted infiltration were added for completion of this application technique (was not added in the earlier database as it was not a category 1 technology). 
+Mean reductions for each combination of reference (broadcast or band application) and low-emission application technique (band application, trailing shoe, open slot injection, closed slot injection, band application combined with aeration) were calculated for each study. 
+A new average was calculated as a combination of the averages from the new literature compilation and the averages found in the 2014 version of the GD, all weighted by number of studies. 
+
+All new literature: ../data/lit_dat.xlsx.
+Average reductions per study from new literature: ../output/app.meth.csv
+Average reductions per study from 2014 version of GD: ../data/SpreadRev_Summ.docx
+Calculation of new means: app_meth_combined.xlsx

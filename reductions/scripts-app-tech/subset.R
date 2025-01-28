@@ -23,3 +23,6 @@ df.incorp.liq <- df[df$app.treat.general == 'broadcast / incorporation' & df$man
 # table for solid data 
 df.solid <- df[df$man.tex == 'Solid', ]
 
+
+# table for mechanically assisted infiltration with broadcast
+df.MAI.broad <- df[df$app.treat.general == 'broadcast / aeration', ]
