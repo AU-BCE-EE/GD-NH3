@@ -1,6 +1,6 @@
 # GD-NH3
-ALFAM2 model calculations and related work for the 2024 +/- update of the UNECE guidance document.
-Presently, all work in this repository is preliminary!
+Calculations and related work for the 2025 +/- update of the UNECE guidance document on NH3.
+Presently, all work in this repository is preliminary (!) and related to chapter 7 (manure application).
 
 # Maintainer
 Sasha D. Hafner.
