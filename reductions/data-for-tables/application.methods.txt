@@ -5,7 +5,11 @@ Two additional older studies (study no 62 and 63) with data from mechanically as
 Mean reductions for each combination of reference (broadcast or band application) and low-emission application technique (band application, trailing shoe, open slot injection, closed slot injection, band application combined with aeration) were calculated for each study. 
 A new average was calculated as a combination of the averages from the new literature compilation and the averages found in the 2014 version of the GD, all weighted by number of studies. 
 
+All the calculations were done with broadcast as the reference. 
+The averages reductions with banded slurry as reference were used to assess if the addition of (broadcast -> banded) and (banded -> technique) reductions were in the same range as the (broadcast -> technique) reduction. That was the case for all techniques.  
+
 All new literature: ../data/lit_dat.xlsx.
 Average reductions per study from new literature: ../output/app.meth.csv
 Average reductions per study from 2014 version of GD: ../data/SpreadRev_Summ.docx
 Calculation of new means: app_meth_combined.xlsx
+Scripts for calculations: ../scripts-app-tech. 'main.R' calls the other scripts. 
