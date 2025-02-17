@@ -2,11 +2,16 @@ Information about the database
 
 The database: ../data/lit_dat.xlsx
 
-The literature search was done the XXXXX
-The following search key was used: YYYYYY at ZZZZZZ 
 As the GD from 2014 contain literature from 2012 and earlier, only literature from 2012 and later was included. 
 
-A total of XX results was screened for.... description of the screening/filtering process here. Will be added. 
+The literature search was done in summer 2024.
+
+The following search key was used: “Ammonia” or “NH3” and “volatilization” or “emission” and “manure” and “application” and “soil” and “agriculture” from 2010 to 2024.
+
+817 documents found in Scopus
+
+The documents titles and abstracts of these documents were scanned, and it was found that 61 were empirical studies comparing NH3 volatilization losses from different application methods or using different additives. 
+Of the 61 studies selected, closer reading revealed that 13 of these either were modeled or did not actually have any comparisons between methods / additives. Therefore, in the end, we were able to use data from 48 studies.
 
 Data from the studies were entered into the excel sheet. 
 
