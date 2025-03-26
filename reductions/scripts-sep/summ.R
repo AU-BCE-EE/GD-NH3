@@ -22,5 +22,7 @@ dfsumm <- dw[, .(red.avg = mean(rdemis),
                  red.sd = sd(rdemis), 
                  DM.red.avg = mean(na.omit(rdDM.lf)), 
                  DM.red.sd = sd(na.omit(rdDM.lf)), 
+                 DM.lf.avg = mean(na.omit(DM.lf)),
+                 DM.lf.sd = sd(na.omit(DM.lf)),
                  study.no = length(unique(source)))]
 
