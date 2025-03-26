@@ -1,0 +1,5 @@
+Dilution  
+
+As the new literature search didn't have any observations with dilution, a new database was collected based literature provided by co-authors. 
+
+The reduction obtained by dilution added to he table is a mean reduction when applying the diluted slurry compared to the undiluted slurry. 
