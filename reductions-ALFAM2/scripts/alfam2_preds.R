@@ -66,7 +66,7 @@ tab <- rounddf(tab, digits = 0, trans = function(x) 100 * x)
 tab[, val := paste0(rred, ' [', lwr, ', ', upr, ']')]
 
 # Export results
-fwrite(summ, '../output/t13_reductions.csv')
-fwrite(tab, '../output/reduction_table.csv')
-fwrite(predm, '../output/t13_preds.csv')
+fwrite(summ, '../output/reductions.csv')
+fwrite(tab, '../output/reductions_table.csv')
+fwrite(predm, '../output/predictions.csv')
 
