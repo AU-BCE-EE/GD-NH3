@@ -64,6 +64,8 @@ ggsave('../plots/rel_red.png', height = 4, width = 8)
 tab <- summ[man.source.pig == 0, .(group, lwr, rred, upr)]
 tab <- rounddf(tab, digits = 0, trans = function(x) 100 * x)
 tab[, val := paste0(rred, ' [', lwr, ', ', upr, ']')]
+# Remove CIs for incorporation
+tab[grepl('incorp', group), val := sub(' \\[.+\\]', '', val)]
 
 # Export results
 fwrite(summ, '../output/reductions.csv')
