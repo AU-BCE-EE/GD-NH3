@@ -1,0 +1,13 @@
+group,lwr,rred,upr,val
+00-0 ref cattle,0,0,0,"0 [0, 0]"
+01-ai trailing hose cattle,16,49,61,"49 [16, 61]"
+02-aii trailing shoe cattle,19,53,63,"53 [19, 63]"
+03-b open slot injection cattle,53,75,79,"75 [53, 79]"
+04-c closed slot injection cattle,82,91,97,"91 [82, 97]"
+05-new1 liquid frac sep cattle,28,42,52,"42 [28, 52]"
+06-e dilution cattle,28,42,52,"42 [28, 52]"
+07-new2 acidified cattle,2,46,58,"46 [2, 58]"
+08-di deep incorp quick cattle,91,93,95,"93 [91, 95]"
+09-dii shallow incorp quick cattle,56,61,68,"61 [56, 68]"
+10-diii deep incorp 4 h cattle,36,48,77,"48 [36, 77]"
+11-div deep incorp 24 h cattle,6,9,28,"9 [6, 28]"

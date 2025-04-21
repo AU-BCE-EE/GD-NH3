@@ -1,23 +1,27 @@
-ID,Description,Adjustsment,Application method,Slurry type,Slurry DM,Slurry pH,Slurry TAN,Slurry treatment,Application rate,TAN application rate,Incorporation,Incorporation time,Air temp.,Wind speed,,Rain rate,,Table 13 values,
-,,,,,(%),,(g/kg or g/L),,(t/ha),(kg/ha),,(h),(°C),"(2 m, m/s)",,(mm/h),,(frac. TAN),
-sid,descrip,adjustment,app.mthd,man.source,man.dm,man.ph,man.tan,man.treat1,app.rate,TAN.app,incorp,time.incorp,air.temp,wind.2m,wind.sqrt,rain.rate,ct,lwr.gd,upr.gd
-0,ref,Reference,bc,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168,,
-ai,Trailing hose,Reference,th,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168,0.3,0.35
-aii,Trailing shoe,Reference,ts,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168,0.3,0.6
-b,Open slot injection,Reference,os,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168,0.7,0.7
-c,Closed slot injection,Reference,cs,cat,6,7,1.2,none,40,48,none,,13,2.7,1.64,0,168,0.8,0.9
-di,Deep incorp quick,Reference,bc,cat,6,7,1.2,none,40,48,deep,0.167,13,2.7,1.64,0,168,0.9,0.9
-dii,Shallow incorp quick,Reference,bc,cat,6,7,1.2,none,40,48,shallow,0.167,13,2.7,1.64,0,168,0.7,0.7
-diii,Deep incorp 4 h,Reference,bc,cat,6,7,1.2,none,40,48,deep,4,13,2.7,1.64,0,168,0.45,0.65
-div,Deep incorp 24 h,Reference,bc,cat,6,7,1.2,none,40,48,deep,24,13,2.7,1.64,0,168,0.3,0.3
-e,Dilution,Reference,bc,cat,2,7,1.2,none,40,48,none,,13,2.7,1.64,0,168,0.3,0.3
-0,ref,Mediterranean,bc,cat,6,7,1.2,none,40,48,none,,20,2.7,1.64,0,168,,
-ai,Trailing hose,Mediterranean,th,cat,6,7,1.2,none,40,48,none,,20,2.7,1.64,0,168,0.3,0.35
-aii,Trailing shoe,Mediterranean,ts,cat,6,7,1.2,none,40,48,none,,20,2.7,1.64,0,168,0.3,0.6
-b,Open slot injection,Mediterranean,os,cat,6,7,1.2,none,40,48,none,,20,2.7,1.64,0,168,0.7,0.7
-c,Closed slot injection,Mediterranean,cs,cat,6,7,1.2,none,40,48,none,,20,2.7,1.64,0,168,0.8,0.9
-di,Deep incorp quick,Mediterranean,bc,cat,6,7,1.2,none,40,48,deep,0.167,20,2.7,1.64,0,168,0.9,0.9
-dii,Shallow incorp quick,Mediterranean,bc,cat,6,7,1.2,none,40,48,shallow,0.167,20,2.7,1.64,0,168,0.7,0.7
-diii,Deep incorp 4 h,Mediterranean,bc,cat,6,7,1.2,none,40,48,deep,4,20,2.7,1.64,0,168,0.45,0.65
-div,Deep incorp 24 h,Mediterranean,bc,cat,6,7,1.2,none,40,48,deep,24,20,2.7,1.64,0,168,0.3,0.3
-e,Dilution,Mediterranean,bc,cat,2,7,1.2,none,40,48,none,,20,2.7,1.64,0,168,0.3,0.3
+ID,Description,Application method,Slurry type,Slurry DM,Slurry pH,Slurry treatment,Application rate,Incorporation,Incorporation time,Air temp.,Wind speed,,Rain rate,,Table 13 values,
+,,,,(%),,,(t/ha),,(h),(°C),"(2 m, m/s)",,(mm/h),,(frac. TAN),
+sid,descrip,app.mthd,man.source,man.dm,man.ph,man.treat1,app.rate,incorp,time.incorp,air.temp,wind.2m,wind.sqrt,rain.rate,ct,lwr.gd,upr.gd
+00-0,ref,Broadcast,Cattle,6,7.3,none,40,none,,14,2,1.41,0.1,168,,
+01-ai,Trailing hose,Trailing hose,Cattle,6,7.3,none,40,none,,14,2,1.41,0.1,168,0.3,0.35
+02-aii,Trailing shoe,Trailing shoe,Cattle,6,7.3,none,40,none,,14,2,1.41,0.1,168,0.3,0.6
+03-b,Open slot injection,Open slot injection,Cattle,6,7.3,none,40,none,,14,2,1.41,0.1,168,0.7,0.7
+04-c,Closed slot injection,Closed slot injection,Cattle,6,7.3,none,40,none,,14,2,1.41,0.1,168,0.8,0.9
+05-new1,Liquid frac sep,Broadcast,Cattle,3,7.3,none,40,none,,14,2,1.41,0.1,168,,
+06-e,Dilution,Broadcast,Cattle,3,7.3,none,40,none,,14,2,1.41,0.1,168,0.3,0.3
+07-new2,Acidified,Broadcast,Cattle,6,5.9,none,40,none,,14,2,1.41,0.1,168,,
+08-di,Deep incorp quick,Broadcast,Cattle,6,7.3,none,40,deep,0.167,14,2,1.41,0.1,168,0.9,0.9
+09-dii,Shallow incorp quick,Broadcast,Cattle,6,7.3,none,40,shallow,0.167,14,2,1.41,0.1,168,0.7,0.7
+10-diii,Deep incorp 4 h,Broadcast,Cattle,6,7.3,none,40,deep,4,14,2,1.41,0.1,168,0.45,0.65
+11-div,Deep incorp 24 h,Broadcast,Cattle,6,7.3,none,40,deep,24,14,2,1.41,0.1,168,0.3,0.3
+00-0,ref,Broadcast,Pig,4,7.5,none,40,none,,14,2,1.41,0.1,168,,
+01-ai,Trailing hose,Trailing hose,Pig,4,7.5,none,40,none,,14,2,1.41,0.1,168,0.3,0.35
+02-aii,Trailing shoe,Trailing shoe,Pig,4,7.5,none,40,none,,14,2,1.41,0.1,168,0.3,0.6
+03-b,Open slot injection,Open slot injection,Pig,4,7.5,none,40,none,,14,2,1.41,0.1,168,0.7,0.7
+04-c,Closed slot injection,Closed slot injection,Pig,4,7.5,none,40,none,,14,2,1.41,0.1,168,0.8,0.9
+05-new1,Liquid frac sep,Broadcast,Pig,2,7.5,none,40,none,,14,2,1.41,0.1,168,,
+06-e,Dilution,Broadcast,Pig,2,7.5,none,40,none,,14,2,1.41,0.1,168,0.3,0.3
+07-new2,Acidified,Broadcast,Pig,4,6.1,none,40,none,,14,2,1.41,0.1,168,,
+08-di,Deep incorp quick,Broadcast,Pig,4,7.5,none,40,deep,0.167,14,2,1.41,0.1,168,0.9,0.9
+09-dii,Shallow incorp quick,Broadcast,Pig,4,7.5,none,40,shallow,0.167,14,2,1.41,0.1,168,0.7,0.7
+10-diii,Deep incorp 4 h,Broadcast,Pig,4,7.5,none,40,deep,4,14,2,1.41,0.1,168,0.45,0.65
+11-div,Deep incorp 24 h,Broadcast,Pig,4,7.5,none,40,deep,24,14,2,1.41,0.1,168,0.3,0.3
