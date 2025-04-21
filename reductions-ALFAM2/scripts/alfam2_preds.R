@@ -14,7 +14,7 @@ sink('../log/R_log.txt')
 sink()
 
 # Input data
-dat <- fread('../inputs/t13_inputs.csv', skip = 2)
+dat <- fread('../inputs/inputs.csv', skip = 2)
 
 # Add group
 dat[, group := tolower(paste(sid, descrip, man.source))]
