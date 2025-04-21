@@ -18,11 +18,19 @@ dw$rdemis <- 100 * dw$emis.perc.lf / dw$emis.perc.raw
 
 dw <- as.data.table(dw)
 
-dfsumm <- dw[, .(red.avg = mean(rdemis), 
-                 red.sd = sd(rdemis), 
-                 DM.red.avg = mean(na.omit(rdDM.lf)), 
-                 DM.red.sd = sd(na.omit(rdDM.lf)), 
-                 DM.lf.avg = mean(na.omit(DM.lf)),
-                 DM.lf.sd = sd(na.omit(DM.lf)),
-                 study.no = length(unique(source)))]
+summ1 <- dw[, .(rdemis = mean(rdemis), 
+                red.sd = sd(rdemis), 
+                rdDM.lf = mean(na.omit(rdDM.lf)), 
+                DM.red.sd = sd(na.omit(rdDM.lf)), 
+                DM.lf = mean(na.omit(DM.lf)),
+                study.no = length(unique(source))), by = source]
 
+dfsumm <- summ1[, .(red.avg = mean(rdemis), 
+                    red.lwr = t.test(rdemis)$conf.int[1],
+                    red.upr = t.test(rdemis)$conf.int[2],
+                    red.sd = sd(rdemis), 
+                    DM.red.avg = mean(na.omit(rdDM.lf)), 
+                    DM.red.sd = sd(na.omit(rdDM.lf)), 
+                    DM.lf.avg = mean(na.omit(DM.lf)),
+                    DM.lf.sd = sd(na.omit(DM.lf)),
+                    study.no = length(unique(source)))]
