@@ -1,12 +1,10 @@
 ---
 title: 'ALFAM2 predictions'
 output: pdf_document
-date: "`r format(Sys.time(), '%d %B, %Y %h:%m')`"
+date: "`r format(Sys.time(), '%d %B, %Y %H:%M')`"
 ---
 
 Use conf.int = 'all' to get results from all 100 parameter sets to compare to reference scenario with uncertainty
-
-Uncertainty preds, returning all for external quantiles.
 
 ```{r}
 alfam2pars03
@@ -23,4 +21,4 @@ predm <- alfam2(dat, time.incorp = 'time.incorp', group = 'group', pass.col = c(
 setDT(predm)
 ```
 
-
+Next steps get confidence intervals from `quantile()`.

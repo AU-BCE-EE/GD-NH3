@@ -1,4 +1,4 @@
-# ALFAM2 predictions of relative emission reductions for GD Table 13 scenarios
+# ALFAM2 predictions of relative emission reductions for guidance document
 
 rm(list = ls())
 
@@ -6,7 +6,7 @@ source('packages.R')
 source('functions.R')
 source('load.R')
 source('clean.R')
-knit('pred_emis.Rmd', output = '../log/pred_emis.md')
+knit('ALFAM2_calcs.Rmd', output = '../logs/ALFAM2_calcs_log.md')
 source('summ.R')
 source('export.R')
 source('plot.R')

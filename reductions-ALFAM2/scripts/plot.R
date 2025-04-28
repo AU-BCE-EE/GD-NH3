@@ -11,4 +11,13 @@ ggplot(summ, aes(sid, rred)) +
   labs(x = 'Table 13 scenario', y = 'Emission reduction (frac. ref. emission)', colour = 'Pig')
 ggsave('../plots/rel_red.png', height = 4, width = 8)
 
+ggplot(predm, aes(group, er)) +
+  geom_point(data = pred, colour = 'gray45') +
+  geom_point(colour = 'red', size = 2) +
+  theme_bw() +
+  coord_flip() +
+  theme(legend.position = 'none') +
+  labs(x = 'Scenario', y = 'Emission (frac. applied TAN)', colour = 'Pig')
+ggsave('../plots/emis.png', height = 4, width = 5)
+
 

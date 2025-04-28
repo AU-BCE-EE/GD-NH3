@@ -1,12 +1,10 @@
 ---
 title: 'ALFAM2 predictions'
 output: pdf_document
-date: "28 April, 2025 Apr:04"
+date: "28 April, 2025 17:34"
 ---
 
 Use conf.int = 'all' to get results from all 100 parameter sets to compare to reference scenario with uncertainty
-
-Uncertainty preds, returning all for external quantiles.
 
 
 ``` r
@@ -14,18 +12,14 @@ alfam2pars03
 ```
 
 ```
-##            int.f0    app.mthd.os.f0    app.mthd.cs.f0 man.source.pig.f0 
-##        0.45305451       -2.89718049       -7.09642528       -0.95213804 
-##         man.dm.f0            int.r1    app.mthd.bc.r1    app.mthd.ts.r1 
-##        0.49956176       -1.45119862        0.73714111       -0.07393662 
-##         man.dm.r1         man.ph.r1       air.temp.r1      wind.sqrt.r1 
-##       -0.03300931        0.42121280        0.03321186        0.46104870 
-##            int.r2      rain.rate.r2            int.r3    app.mthd.cs.r3 
-##       -1.16953266        0.60163865       -2.68829766       -0.38439637 
-##    incorp.deep.r3         man.ph.r3 incorp.shallow.f4    incorp.deep.f4 
-##       -5.35112099        0.11776977       -1.41820869       -2.94966810 
-##            int.r5      rain.rate.r5 
-##       -1.80000000        0.48425409
+##            int.f0    app.mthd.os.f0    app.mthd.cs.f0 man.source.pig.f0         man.dm.f0            int.r1    app.mthd.bc.r1 
+##        0.45305451       -2.89718049       -7.09642528       -0.95213804        0.49956176       -1.45119862        0.73714111 
+##    app.mthd.ts.r1         man.dm.r1         man.ph.r1       air.temp.r1      wind.sqrt.r1            int.r2      rain.rate.r2 
+##       -0.07393662       -0.03300931        0.42121280        0.03321186        0.46104870       -1.16953266        0.60163865 
+##            int.r3    app.mthd.cs.r3    incorp.deep.r3         man.ph.r3 incorp.shallow.f4    incorp.deep.f4            int.r5 
+##       -2.68829766       -0.38439637       -5.35112099        0.11776977       -1.41820869       -2.94966810       -1.80000000 
+##      rain.rate.r5 
+##        0.48425409
 ```
 
 
@@ -63,4 +57,4 @@ predm <- alfam2(dat, time.incorp = 'time.incorp', group = 'group', pass.col = c(
 setDT(predm)
 ```
 
-
+Next steps get confidence intervals from `quantile()`.

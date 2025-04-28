@@ -6,7 +6,7 @@ library(ggplot2)
 library(knitr)
 
 # Software log
-sink('../log/R_log.txt')
+sink('../logs/R_log.txt')
   print(sessionInfo())
 sink()
 
