@@ -1,5 +1,5 @@
 ID,Description,Application method,Slurry type,Slurry DM,Slurry pH,Application rate,Incorporation,Incorporation time,Air temp.,Wind speed,,Rain rate,,Table 13 values,
-,,,,(%),,(t/ha),,(h),(°C),"(2 m, m/s)",,(mm/h),,(frac. TAN),
+,,,,(%),,(t/ha),,(h),(deg. C),"(2 m, m/s)",,(mm/h),,(frac. TAN),
 sid,descrip,app.mthd,man.source,man.dm,man.ph,app.rate,incorp,time.incorp,air.temp,wind.2m,wind.sqrt,rain.rate,ct,lwr.gd,upr.gd
 00-0,ref,Broadcast,Cattle,6,7.3,40,none,,14,2,1.41,0.1,168,,
 01-ai,Trailing hose,Trailing hose,Cattle,6,7.3,40,none,,14,2,1.41,0.1,168,0.3,0.35
