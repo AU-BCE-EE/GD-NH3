@@ -9,6 +9,9 @@ Contact information here: <https://www.au.dk/vis/person/sasha.hafner@bce.au.dk>.
 
 # Contents
 
+## ATMS
+STMS examples and documents.
+
 ## functions
 R functions used by scripts in the other subdirectories.
 
@@ -40,6 +43,10 @@ It calls the other scripts.
 ## reductions-lit
 Emission reductions for abatement techniques based on literature data.
 
+### analysis-xlsx
+Simple spreadsheet analysis for combining 2014 summary and new literature data.
+See Data description section below for details.
+
 ### data
 Emission data from literature.
 Main files are describe in the list below.
@@ -47,10 +54,34 @@ Main files are describe in the list below.
 * lit_data.xlsx - newly compiled literature data used for calculating new emision reductions, which were combined with results from the earlier summary to develop reductions that are included in the new version of the guidance document. The text below describes how these data were collected from the literature.
 * data_2014.xlsx - summary of the literature data used to develop reduction estimates for the 2014 version of the guidance document. Taken directly from the file SpreadRev_Summ.xlsx that was included as an appendix to the 2014 document. 
 
-#### Literature search
-As the GD from 2014 contain literature from 2012 and earlier, only literature from 2012 and later was included. 
-The literature search was done in summer 2024.
-The following search terms were used in Scopus: 
+### output
+Results.
+
+### scripts-acid
+R scripts for working up acidification data.
+The single script main.R will run the complete analysis, calling other scripts.
+
+### scripts-app-tech
+R scripts for working up application method data.
+The single script main.R will run the complete analysis, calling other scripts.
+
+### scripts-dilution
+R scripts for working up dilution data.
+The single script main.R will run the complete analysis, calling other scripts.
+
+### scripts-sep
+R scripts for working up application method data.
+The single script main.R will run the complete analysis, calling other scripts.
+
+# Data 
+## Two sources
+Emission reductions presented in the new guidance document are based on the summary from the 2014 version of the guidance document and new literature data.
+The 2014 summary is from the file SpreadRev_Summ.xlsx, which was included as an appendix to the 2014 document.
+
+## Literature search
+This 2014 document contained literature from 2012 and earlier, so for the search for new results, only literature from 2012 and later was included. 
+The literature search was done in summer 2024 using Scopus.
+The following search terms were used: 
 
 “Ammonia” or “NH3” and “volatilization” or “emission” and “manure” and “application” and “soil” and “agriculture” from 2010 to 2024
 
@@ -59,48 +90,38 @@ The documents titles and abstracts were scanned, and it was found that 61 were e
 Of the 61 studies selected, closer reading revealed that 13 of these either were modeled or did not actually have any comparisons between methods / additives. 
 Therefore, in the end, data from 48 studies were used.
 
-#### Other data
-Data from the studies were entered into the excel sheet. 
+Data from the studies were entered into the file reductions-lit/data/lit_dat.xlsx.
 
-A few additional studies on separation (study no 57-61) were included for completeness, see more info in the file ../data-for-tables/acidification.txt
+A few additional studies on separation (study no 57-61) were included for completeness, see more info in the section on acidification below. 
 
-#### Acidification 
 
-The database was used and filtered for observations with acidification. As acidification was not a Category 1 technique in the GD in 2014, there is no data on acidification in the literature summary from 2014. Therefore, additional data from studies older than 2012 was included.
-
-Database: ../data/lit_dat.xlsx
-Search key etc. for the database: ../data/database_info.txt
-Additional acidification data: ../data/acidification_data_extra.xlsx
-Literature summary from 2014: ../data/data_2014.xlsx and ../SpreadRev_Summ.docx and ../data/SpreadRev_Tabs.docx
-Scripts for calculations: ../scripts-acid. 'main.R' calls the other scripts. 
-Output: ../output/df.acidification.csv. 
-
+## Acidification data
+The database was used and filtered for observations with acidification. 
+As acidification was not a Category 1 technique in the GD in 2014, there is no data on acidification in the literature summary from 2014. 
+Therefore, additional data from studies older than 2012 was included.
+Additional acidification data are in reductions-lit/data/acidification_data_extra.xlsx
 The reduction obtained by acidification added to he table is a mean reduction from all the studies. 
 
-#### Application methods 
-
+## Application methods 
 Data from the new literature compilation were used to calculate average reductions of the different application techniques compared to broadcast and band applied slurry. 
 Two additional older studies (study no 62 and 63) with data from mechanically assisted infiltration were added for completion of this application technique (was not added in the earlier database as it was not a category 1 technology). 
 Mean reductions for each combination of reference (broadcast or band application) and low-emission application technique (band application, trailing shoe, open slot injection, closed slot injection, band application combined with aeration) were calculated for each study. 
 A new average was calculated as a combination of the averages from the new literature compilation and the averages found in the 2014 version of the GD, all weighted by number of studies. 
 
 All the calculations were done with broadcast as the reference. 
-The averages reductions with banded slurry as reference were used to assess if the addition of (broadcast -> banded) and (banded -> technique) reductions were in the same range as the (broadcast -> technique) reduction. That was the case for all techniques.  
+The averages reductions with banded slurry as reference were used to assess if the addition of (broadcast -> banded) and (banded -> technique) reductions were in the same range as the (broadcast -> technique) reduction. 
+That was the case for all techniques.  
 
-All new literature: ../data/lit_dat.xlsx.
 Average reductions per study from new literature: ../output/app.meth.csv
 Average reductions per study from 2014 version of GD: ../data/SpreadRev_Summ.docx
-Calculation of new means: app_meth_combined.xlsx
-Scripts for calculations: ../scripts-app-tech. 'main.R' calls the other scripts. 
+Calculation of new means: analysis-xlsx/app_meth_combined.xlsx
+Scripts for calculations: reductions-lit/scripts-app-tech. 'main.R' calls the other scripts. 
 
-#### Dilution
-
+## Dilution
 As the new literature search didn't have any observations with dilution, a new database was collected based literature provided by co-authors. 
-
 The reduction obtained by dilution added to he table is a mean reduction when applying the diluted slurry compared to the undiluted slurry. 
 
-#### Incorporation of liquid slurry 
-
+## Incorporation of liquid slurry 
 10 new observations were identified in the literature search 
 All new literature: ../data/lit_dat.xlsx.
 Studies with slurry incorporated: ../output/df.incorp.liq.csv. 
@@ -108,8 +129,7 @@ Scripts to filter the data to get df.incorp.liq.csv from lit_dat.xlsx: ../script
 The reductions in these studies are in line with the GD from 2014, therefore, we did not find that there was evidence to change these. 
 The numbers from the 2014 GD are used in this revised version without any changes. 
 
-#### Separation 
-
+## Separation 
 As the new literature search only had a few observations with liquid fraction, it was chosen to use the database collected in Pedersen et al. (2022).
 
 Pedersen et al. (2022): Pedersen, J., Hafner, S. D., Adamsen, A. P. S. 2022. Effectiveness of mechanical separation for reducing ammonia loss from field-applied slurry: Assessment through iterature review and model calculations. Journal of Environmental Management 323. 116196. https://doi.org/10.1016/j.jenvman.2022.116196
@@ -119,8 +139,7 @@ Output: ../output/df.separation.csv
 
 The reduction obtained by separation added to he table is a mean reduction when applying the liquid fraction after separation compared to the unseparated slurry or digestate. Emissions from the solid fraction is not included. 
 
-#### Solid manure
-
+## Solid manure
 Only two new studies (5 observations in total) were identified in the literature search 
 All new literature: ../data/lit_dat.xlsx.
 Studies with solid manure applied by different techniques: ../output/df.solid.csv. 
