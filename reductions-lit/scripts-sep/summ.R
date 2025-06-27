@@ -14,7 +14,7 @@ dw$dDM.lf <- dw$DM.lf - dw$DM.raw
 dw$rdDM.lf <- 100 * dw$dDM.lf / dw$DM.raw
 
 # Change in emission due to separation
-dw$rdemis <- 100 * dw$emis.perc.lf / dw$emis.perc.raw
+dw$rdemis <- (dw$emis.perc.raw - dw$emis.perc.lf) / dw$emis.perc.raw * 100
 
 dw <- as.data.table(dw)
 
