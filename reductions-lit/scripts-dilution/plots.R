@@ -5,6 +5,7 @@ ggplot(df, aes(dil.fac, red, colour = study)) +
   theme_bw() + 
   xlab('Dilution factor (quantity of water compared to slurry)') + ylab('Reduction due to dilution (%)') +
   theme(legend.title = element_blank())
+ggsave2x('../plots/dilution_1', height = 6, width = 8)
 
 # What needs to be done: 
 # Make legends the same as for pH and separation plot.

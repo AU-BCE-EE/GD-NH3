@@ -5,13 +5,14 @@ ggplot(df, aes(pHr, r, colour = ref)) +
   theme_bw() + 
   xlab('Change in pH due to acidification') + ylab('Reduction due to acidification (%)') +
   theme(legend.title = element_blank())
-
+ggsave2x('../plots/acid_1', height = 6, width = 8)
 
 ggplot(df, aes(pH.a, r, colour = ref)) + 
   geom_point() + 
   theme_bw() + 
   xlab('pH of acidified slurry') + ylab('Reduction due to acidification (%)') +
   theme(legend.title = element_blank())
+ggsave2x('../plots/acid_2', height = 6, width = 8)
 
 # What needs to be done: 
 # Combining figures with one legend. 

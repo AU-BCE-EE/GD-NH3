@@ -5,12 +5,14 @@ ggplot(dw, aes(rdDM.lf, rdemis, colour = source)) +
   theme_bw() + 
   xlab('Reduction in LF DM compared to RS DM (%)') + ylab('Reduction in emissons from application of LF compared to RS (%)') +
   theme(legend.title = element_blank())
+ggsave2x('../plots/separation_1', height = 6, width = 8)
 
 ggplot(dw, aes(DM.lf, rdemis, colour = source)) + 
   geom_point() + 
   theme_bw() + 
   xlab('DM of liquid fraction (%)') + ylab('Reduction in emissons from application of LF compared to RS (%)') +
   theme(legend.title = element_blank())
+ggsave2x('../plots/separation_2', height = 6, width = 8)
 
 # What needs to be done: 
 # Are any of these plots informative at all? Shows that the end DM or relative change in DM is not enough to predict reduction efficiency. 
