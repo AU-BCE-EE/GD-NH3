@@ -6,5 +6,6 @@ source('load.R')
 source('clean.R')
 source('summ.R')
 source('export.R')
+source('ALFAM2.R')
 source('plots.R')
 

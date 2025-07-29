@@ -1,6 +1,9 @@
 
 
 ggplot(dw, aes(rdDM.lf, rdemis, colour = source)) + 
+  geom_line(data = pred3, aes(rdm, red), colour = 'gray35') + 
+  geom_line(data = predci, aes(rdm, red.lwr), lty = 2, colour = 'gray55') + 
+  geom_line(data = predci, aes(rdm, red.upr), lty = 2, colour = 'gray55') + 
   geom_point() + 
   theme_bw() + 
   xlab('Reduction in LF DM compared to RS DM (%)') + ylab('Reduction in emissons from application of LF compared to RS (%)') +

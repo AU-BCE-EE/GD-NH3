@@ -1,6 +1,9 @@
 
 
 ggplot(df, aes(dil.fac, red, colour = study)) + 
+  geom_line(data = pred3, aes(dil.fact, red), colour = 'gray35') + 
+  geom_line(data = predci, aes(dil.fact, red.lwr), lty = 2, colour = 'gray55') + 
+  geom_line(data = predci, aes(dil.fact, red.upr), lty = 2, colour = 'gray55') + 
   geom_point() + 
   theme_bw() + 
   xlab('Dilution factor (quantity of water compared to slurry)') + ylab('Reduction due to dilution (%)') +
@@ -9,4 +12,3 @@ ggsave2x('../plots/dilution_1', height = 6, width = 8)
 
 # What needs to be done: 
 # Make legends the same as for pH and separation plot.
-# Adding ALFAM2 predictions, obs that TAN concentration should also half as DM half. And app mount double (probably this was already done for the predictions for the tables, didn't check
