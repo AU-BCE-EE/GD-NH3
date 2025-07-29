@@ -1,7 +1,10 @@
 
 
-ggplot(df, aes(pHr, r, colour = ref)) + 
-  geom_point() + 
+ggplot(df, aes(pHr, r)) + 
+  geom_line(data = pred3, aes(dph, red), colour = 'gray35') + 
+  geom_line(data = predci, aes(dph, red.lwr), lty = 2, colour = 'gray55') + 
+  geom_line(data = predci, aes(dph, red.upr), lty = 2, colour = 'gray55') + 
+  geom_point(aes(colour = ref)) + 
   theme_bw() + 
   xlab('Change in pH due to acidification') + ylab('Reduction due to acidification (%)') +
   theme(legend.title = element_blank())
