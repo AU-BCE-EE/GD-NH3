@@ -2,7 +2,8 @@
 
 # Set inputs
 # Untreated pH is 7.3
-dat <- data.table(ct = 96, man.dm = 6, man.ph = 30:73 / 10, 
+# Duration is 3 d
+dat <- data.table(ct = 72, man.dm = 6, man.ph = 30:73 / 10, 
                   air.temp = 14, wind.sqrt = 1.41, rain.rate = 0.1, 
                   TAN.app = 100)
 dat[, dph := 7.3 - man.ph]

@@ -19,6 +19,5 @@ ggsave2x('../plots/acid_2', height = 6, width = 8)
 
 # What needs to be done: 
 # Combining figures with one legend. 
-# Adding ALFAM2 predictions to the first figure (with change of pH on x-axis). 
-# Which parameters to use? Especially for slurry....? 
+# For ALFAM2 predictions, decide: Which inputs to use? What duration? Especially for slurry....? 
 
