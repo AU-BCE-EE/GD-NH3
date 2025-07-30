@@ -5,6 +5,10 @@
 dl <- melt(dat, id.vars = c('source', 'set', 'slurry.source', 'frac.studA', 'app.meth'), 
            measure.vars = c('DM', 'emis.perc'), na.rm = TRUE)
 
+# And a different version (with DM column) for the plots
+dl2 <- melt(dat, id.vars = c('source', 'set', 'slurry.source', 'frac.studA', 'app.meth', 'DM'), 
+            measure.vars = c('emis.perc'), na.rm = TRUE)
+
 # Spread out fractions
 dw <- dcast(dl, source + set + slurry.source + app.meth ~ variable + frac.studA, value.var = 'value')
 names(dw) <- gsub('_', '.', names(dw))
