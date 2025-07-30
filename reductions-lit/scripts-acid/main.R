@@ -1,3 +1,5 @@
+# Summarize and plot emission reductions for acidification from the literature
+# Includes ALFAM2 model predictions (see ALFAM2.R for inputs)
 
 rm(list=ls())
 

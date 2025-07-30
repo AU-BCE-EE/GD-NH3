@@ -1,11 +1,13 @@
 # Make ALFAM2 predictions
 
-# Set inputs
+# Set inputs for cattle slurry
+# Untreated pH is 7.3
 # Duration is 3 d
+# Application method is broadcast
 dil.fact <- 0:20 / 10
 dat <- data.table(ct = 72, dil.fact = dil.fact, man.dm = 6 / (1 + dil.fact), 
-                  man.ph = 7.3, air.temp = 14, wind.sqrt = 1.41, rain.rate = 0.1, 
-                  TAN.app = 100)
+                  app.mthd = 'Broadcast',
+                  man.ph = 7.3, air.temp = 14, wind.sqrt = 1.48, rain.rate = 0.1)
 
 pred <- alfam2(dat, group = 'dil.fact', conf.int = 'all')
 pred3 <- alfam2(dat, group = 'dil.fact')
