@@ -21,7 +21,8 @@ ALFAM2 model predictions of emission reductions for the abatement techniques inc
 ### inputs
 ALFAM2 model inputs for a reference scenario and abatement scenarios for both cattle and pig slurry.
 Only cattle results are given in the document.
-Inputs are probably easiest to view (and edit) using a spreadsheet program.
+Inputs are probably easiest to view (and edit) using a spreadsheet program or similar.
+These values are averages calculated from v2.64 of the ALFAM2 database (<https://github.com/AU-BCE-EE/ALFAM2-data/releases/tag/v2.64>) with equal weighting by country (see analysis/averages/output files).
 
 ### logs
 R and R package version log, and ALFAM2 log from running ALFAM2_calcs.R.
@@ -42,10 +43,12 @@ It calls the other scripts.
 
 ## reductions-lit
 Emission reductions for abatement techniques based on literature data.
+But ALFAM2 model predictions are included for comparison.
+Here inputs are set in individual ALFAM2.R scripts, but they follow the values described above for reductions-ALFAM2/inputs.
 
 ### analysis-xlsx
 Simple spreadsheet analysis for combining 2014 summary and new literature data.
-See Data description section below for details.
+See data description section below for details.
 
 ### data
 Emission data from literature.
