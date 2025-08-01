@@ -34,6 +34,15 @@ ggplot(df, aes(pHr, r)) +
   labs(colour = 'Untreated slurry pH') 
 ggsave2x('../plots/acid_3', height = 6, width = 8)
 
+ggplot(df, aes(pHr, r)) + 
+  geom_point(aes(colour = ref)) + 
+  geom_line(data = pred3, aes(dph, red), colour = 'gray45', lwd = 1.5) + 
+  geom_line(data = predci, aes(dph, red.lwr), lty = 2, colour = 'gray55') + 
+  geom_line(data = predci, aes(dph, red.upr), lty = 2, colour = 'gray55') + 
+  theme_bw() + 
+  xlab('Change in pH due to acidification') + ylab('Reduction due to acidification (%)') +
+  theme(legend.title = element_blank())
+ggsave2x('../plots/acid_4', height = 6, width = 8)
 
 # What needs to be done: 
 # Combining figures with one legend. 
