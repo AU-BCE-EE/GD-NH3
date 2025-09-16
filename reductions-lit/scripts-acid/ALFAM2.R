@@ -6,7 +6,8 @@
 # Application method is broadcast
 dat <- data.table(ct = 72, man.dm = 6, man.ph = 30:73 / 10, 
                   app.mthd = 'Broadcast',
-                  air.temp = 14, wind.sqrt = 1.48, rain.rate = 0.1)
+                  air.temp = 14, wind.sqrt = 1.41, rain.rate = 0.1,
+                  TAN.app = 1)
 dat[, dph := 7.3 - man.ph]
 
 pred <- alfam2(dat, group = 'dph', conf.int = 'all')
