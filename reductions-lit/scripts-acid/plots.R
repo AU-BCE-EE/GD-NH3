@@ -10,14 +10,14 @@ ggplot(df, aes(pHr, r)) +
   theme_bw() + 
   xlab('Change in pH due to acidification') + ylab('Reduction due to acidification (%)') +
   theme(legend.title = element_blank())
-ggsave2x('../plots/acid_1', height = 6, width = 8)
+ggsave2x('../plots/acid_1', height = 4.5, width = 6)
 
 ggplot(df, aes(pH.a, r, colour = ref)) + 
   geom_point() + 
   theme_bw() + 
-  xlab('pH of acidified slurry') + ylab('Reduction due to acidification (%)') +
+  xlab('pH of acidified slurry') + ylab('Emission reduction due to acidification (%)') +
   theme(legend.title = element_blank())
-ggsave2x('../plots/acid_2', height = 6, width = 8)
+ggsave2x('../plots/acid_2', height = 4.5, width = 6)
 
 df[, pH.u := as.numeric(pH.u)]
 ggplot(df, aes(pHr, r)) + 
@@ -30,9 +30,9 @@ ggplot(df, aes(pHr, r)) +
   geom_line(data = predci, aes(dph, red.upr), lty = 2, colour = 'gray55') + 
   theme_bw() + 
   theme(legend.position = 'top') +
-  xlab('Change in pH due to acidification') + ylab('Reduction due to acidification (%)') +
+  xlab('Change in pH due to acidification') + ylab('Emission reduction due to acidification (%)') +
   labs(colour = 'Untreated slurry pH') 
-ggsave2x('../plots/acid_3', height = 6, width = 8)
+ggsave2x('../plots/acid_3', height = 4.5, width = 6)
 
 ggplot(df, aes(pHr, r)) + 
   geom_point(aes(colour = ref)) + 
@@ -40,9 +40,11 @@ ggplot(df, aes(pHr, r)) +
   geom_line(data = predci, aes(dph, red.lwr), lty = 2, colour = 'gray55') + 
   geom_line(data = predci, aes(dph, red.upr), lty = 2, colour = 'gray55') + 
   theme_bw() + 
-  xlab('Change in pH due to acidification') + ylab('Reduction due to acidification (%)') +
-  theme(legend.title = element_blank())
-ggsave2x('../plots/acid_4', height = 6, width = 8)
+  theme(legend.position = 'top') +
+  guides(colour = guide_legend(ncol = 3)) +
+  xlab('Change in pH due to acidification') + ylab('Emission reduction due to acidification (%)') +
+  theme(legend.title = element_blank(), legend.text = element_text(size = 7))
+ggsave2x('../plots/acid_4', height = 6.5, width = 5)
 
 # What needs to be done: 
 # Combining figures with one legend. 

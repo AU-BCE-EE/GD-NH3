@@ -21,4 +21,4 @@ pred[, red := 100 * (1 - er / max(er)), by = .(par.id)]
 pred3[, red := 100 * (1 - er / max(er))]
 
 # And then confident intervals
-predci <- pred[, .(red.lwr = quantile(red, 0.1), red.upr = quantile(red, 0.9)), by = .(dph)]
+predci <- pred[, .(red.lwr = quantile(red, 0.05), red.upr = quantile(red, 0.95)), by = .(dph)]
