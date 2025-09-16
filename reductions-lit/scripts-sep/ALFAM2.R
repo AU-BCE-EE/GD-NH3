@@ -11,7 +11,7 @@ indat <- data.table(ct = 72, rdm = rdm, man.dm = 6 * (100 + rdm) / 100,
                   TAN.app = 100)
 
 pred <- alfam2(indat, group = 'rdm', conf.int = 'all')
-pred3 <- alfam2(indat, group = 'rdm', conf.int = 0.8)
+pred3 <- alfam2(indat, group = 'rdm', conf.int = 0.9)
 
 setDT(pred)
 setDT(pred3)
@@ -25,4 +25,4 @@ pred[, red := 100 * (1 - er / max(er)), by = .(par.id)]
 pred3[, red := 100 * (1 - er / max(er))]
 
 # And then confident intervals
-predci <- pred[, .(red.lwr = quantile(red, 0.1), red.upr = quantile(red, 0.9)), by = .(rdm)]
+predci <- pred[, .(red.lwr = quantile(red, 0.05), red.upr = quantile(red, 0.95)), by = .(rdm)]

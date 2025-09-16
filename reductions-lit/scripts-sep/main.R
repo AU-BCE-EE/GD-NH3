@@ -1,3 +1,5 @@
+# Create separation effect plot
+
 rm(list = ls())
 
 source('functions.R')
