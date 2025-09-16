@@ -19,4 +19,4 @@ ep <- ggplot(isub, aes(ct/24, 100 * e.rel, colour = factor(pmid))) +
 
 pp <- grid.arrange(fp, ep, ncol = 2)
 
-ggsave2x('../plots/emis_plot', pp, height = 2.5, width = 8)
+ggsave2x('../plots/emis_plot', pp, height = 2.5, width = 7)
