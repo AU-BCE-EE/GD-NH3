@@ -10,7 +10,7 @@ Contact information here: <https://www.au.dk/vis/person/sasha.hafner@bce.au.dk>.
 # Contents
 
 ## ATMS
-STMS examples and documents.
+ATMS examples and documents.
 
 ## functions
 R functions used by scripts in the other subdirectories.
