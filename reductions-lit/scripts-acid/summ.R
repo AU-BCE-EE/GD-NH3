@@ -5,11 +5,11 @@ df$pHr <- as.numeric(df$pH.u) - as.numeric(df$pH.a)
 
 # calculating the average reduction pr ref 
 summ1 <- df[, .(red = mean(r), 
-                 red.sd = sd(r), 
-                 pHr = mean(pHr), 
-                 pHr.sd = sd(pHr),
-                 pH.a = mean(pH.a), 
-                 pH.a.sd = sd(pH.a)), by = ID]
+                red.sd = sd(r), 
+                pHr = mean(pHr), 
+                pHr.sd = sd(pHr),
+                pH.a = mean(pH.a), 
+                pH.a.sd = sd(pH.a)), by = ID]
 
 dfsumm <- summ1[, .(red.avg = mean(red), 
                     red.sd = sd(red), 
