@@ -9,5 +9,9 @@ group,lwr,rred,upr,val
 07-new2 acidified cattle,0,46,60,"46 [0, 60]"
 08-di deep incorp quick cattle,91,93,96,93
 09-dii shallow incorp quick cattle,46,61,69,61
-10-diii deep incorp 4 h cattle,35,48,85,48
-11-div deep incorp 24 h cattle,5,9,48,9
+10-diii deep incorp 4 h cattle,57,67,91,67
+11-div deep incorp 24 h cattle,9,17,67,17
+comb1 trailing shoe + acid cattle,55,77,86,"77 [55, 86]"
+comb2 dilution + acid cattle,33,65,73,"65 [33, 73]"
+comb3 trailing shoe + dilution cattle,41,65,77,"65 [41, 77]"
+comb4 trailing hose + dilution cattle,35,64,71,"64 [35, 71]"
