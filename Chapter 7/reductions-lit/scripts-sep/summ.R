@@ -38,3 +38,5 @@ dfsumm <- summ1[, .(red.avg = mean(rdemis),
                     DM.lf.avg = mean(na.omit(DM.lf)),
                     DM.lf.sd = sd(na.omit(DM.lf)),
                     study.no = length(unique(source)))]
+
+appsumm <- table(dat$app.meth)

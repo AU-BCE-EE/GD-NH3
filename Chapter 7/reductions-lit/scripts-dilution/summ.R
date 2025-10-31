@@ -14,3 +14,4 @@ dfsumm <- summ1[, .(red.avg = mean(red),
                  dil.fac.sd = sd(dil.fac), 
                  study.no = length(unique(study)))]
 
+appsumm <- table(df$app.meth)

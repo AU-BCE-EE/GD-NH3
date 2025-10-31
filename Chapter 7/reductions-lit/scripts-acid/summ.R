@@ -20,3 +20,6 @@ dfsumm <- summ1[, .(red.avg = mean(red),
                     pH.acid.avg = mean(na.omit(pH.a)), 
                     pH.acid.sd = sd(na.omit(pH.a)), 
                     study.no = length(unique(ID)))]
+
+# Count application methods
+appsumm <- table(df$app.mthd)
