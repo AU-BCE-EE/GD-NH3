@@ -15,3 +15,7 @@ dfsumm <- summ1[, .(red.avg = mean(red),
                  study.no = length(unique(study)))]
 
 appsumm <- table(df$app.meth)
+
+# calculating the average DM reduction (% of reference/undiluted DM)
+
+
