@@ -25,7 +25,7 @@ pred3e[, man.dm := 6 * (100 + rdm) / 100]
 pred3e[, frac.stud.nm := factor(ifelse(rdm < 0, 'Raw', 'LF'))]
 
 ggplot(dl2, aes(DM, value)) +
-  geom_line(aes(colour = source, group = interaction(source, set)), arrow = arrow(ends = 'first', length = unit(0.2, 'cm')), alpha = 0.8) +
+  geom_line(aes(colour = source, group = interaction(source, set, app.meth)), arrow = arrow(ends = 'first', length = unit(0.2, 'cm')), alpha = 0.8) +
   geom_line(data = pred3e, aes(man.dm, 100*er), colour = 'gray35', lwd = 1.1, arrow = arrow(ends = 'first', length = unit(0.3, 'cm'))) +
   geom_line(data = pred3e, aes(man.dm, 100*er.lwr), colour = 'gray35', lty = '1111') +
   geom_line(data = pred3e, aes(man.dm, 100*er.upr), colour = 'gray35', lty = '1111') +
@@ -34,7 +34,7 @@ ggplot(dl2, aes(DM, value)) +
   guides(colour = guide_legend(ncol = 3)) +
   #scale_colour_manual(values = viridis(4)) +
   labs(x = 'Raw slurry or liquid fraction DM (%)', y = 'Emission factor (% of TAN)', shape = '', colour = '', lty = '')
-ggsave2x('../plots/separation_3', height = 7.5, width = 5)
+ggsave2x('../plots/separation_3', height = 7.5, width = 5.2)
 
 # What needs to be done: 
 # Are any of these plots informative at all? Shows that the end DM or relative change in DM is not enough to predict reduction efficiency. 
