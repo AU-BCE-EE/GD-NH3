@@ -27,8 +27,8 @@ pred3e[, frac.stud.nm := factor(ifelse(rdm < 0, 'Raw', 'LF'))]
 ggplot(dl2, aes(DM, value)) +
   geom_line(aes(colour = source, group = interaction(source, set, app.meth)), arrow = arrow(ends = 'first', length = unit(0.2, 'cm')), alpha = 0.8) +
   geom_line(data = pred3e, aes(man.dm, 100*er), colour = 'gray35', lwd = 1.1, arrow = arrow(ends = 'first', length = unit(0.3, 'cm'))) +
-  geom_line(data = pred3e, aes(man.dm, 100*er.lwr), colour = 'gray35', lty = '1111') +
-  geom_line(data = pred3e, aes(man.dm, 100*er.upr), colour = 'gray35', lty = '1111') +
+  geom_line(data = pred3e, aes(man.dm, 100*er.lwr), colour = 'gray35', lty = 2) +
+  geom_line(data = pred3e, aes(man.dm, 100*er.upr), colour = 'gray35', lty = 2) +
   theme_bw() +
   theme(legend.position = 'top', legend.text = element_text(size = 7)) +
   guides(colour = guide_legend(ncol = 3)) +
