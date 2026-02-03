@@ -12,9 +12,12 @@ df1 <- df1[! df1$app.treat.general %in% c('irrigation', 'stubble coverage'), ]
 df1 <- df1[! df1$red.2 == 'N/A', ]
 
 # Add () to dates
-df1 <- df1[, study := gsub(' ([12])', ' (\\1', study)]
-df1 <- df1[, study := gsub('([0-9ab])$', '\\1)', study)]
+df1[, study := gsub(' ([12])', ' (\\1', study)]
+df1[, study := gsub('([0-9ab])$', '\\1)', study)]
 
-df2 <- df2[, ref := gsub(' ([12])', ' (\\1', ref)]
-df2 <- df2[, ref := gsub('([0-9ab])$', '\\1)', ref)]
+df2[, ref := gsub(' ([12])', ' (\\1', ref)]
+df2[, ref := gsub('([0-9ab])$', '\\1)', ref)]
 
+# And remove commas
+df1[, study := gsub(',', '', study)]
+df2[, ref := gsub(',', '', ref)]
