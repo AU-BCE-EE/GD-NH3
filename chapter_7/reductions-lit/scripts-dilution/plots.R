@@ -6,9 +6,11 @@ ggplot(df, aes(dil.fac, red, colour = study)) +
   geom_point(size = 3) + 
   scale_x_continuous(breaks = c(0, 0.5, 1, 1.5, 2), labels = c('None', '1:0.5', '1:1', '1:1.5', '1:2')) +
   theme_bw() + 
+  theme(legend.position = 'top') +
+  guides(colour = guide_legend(ncol = 2)) +
   xlab('Dilution factor (slurry:added water)') + ylab('Emission reduction due to dilution (%)') +
   theme(legend.title = element_blank())
-ggsave2x('../plots/dilution_1', height = 4.5, width = 6)
+ggsave2x('../plots/dilution_1', height = 4.8, width = 5)
 
 ggplot(df, aes(dil.fac, red, colour = ref.dm)) + 
   geom_point(size = 3) + 
