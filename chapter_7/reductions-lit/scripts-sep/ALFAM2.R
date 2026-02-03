@@ -2,12 +2,12 @@
 
 # Set inputs for cattle slurry
 # Untreated pH is 7.3
-# Duration is 3 d
+# Duration is 7 d
 # Application method is broadcast
 rdm <- 66:-90 
-indat <- data.table(ct = 72, rdm = rdm, man.dm = 6 * (100 + rdm) / 100, 
+indat <- data.table(ct = 168, rdm = rdm, man.dm = 6 * (100 + rdm) / 100, 
                   app.mthd = 'Broadcast',
-                  man.ph = 7.3, air.temp = 14, wind.sqrt = 1.48, rain.rate = 0.1, 
+                  man.ph = 7.3, air.temp = 13, wind.sqrt = 1.39, rain.rate = 0., 
                   TAN.app = 1)
 
 pred <- alfam2(indat, group = 'rdm', conf.int = 'all')
