@@ -2,7 +2,7 @@
 
 # Set inputs for cattle slurry
 # Untreated pH is 7.3
-# Duration is 3 d
+# Duration is 7 d
 # Application method is broadcast
 dat <- data.table(ct = 168, man.dm = 6, man.ph = 40:73 / 10, 
                   app.mthd = 'Broadcast',
