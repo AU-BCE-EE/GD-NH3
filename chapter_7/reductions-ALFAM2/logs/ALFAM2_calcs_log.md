@@ -1,7 +1,7 @@
 ---
 title: 'ALFAM2 predictions'
 output: pdf_document
-date: "03 February, 2026 06:21"
+date: "03 February, 2026 09:01"
 ---
 
 Use conf.int = 'all' to get results from all 100 parameter sets to compare to reference scenario with uncertainty
