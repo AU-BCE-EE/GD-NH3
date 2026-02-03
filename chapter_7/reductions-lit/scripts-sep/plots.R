@@ -33,8 +33,8 @@ ggplot(dl2, aes(DM, value)) +
   theme(legend.position = 'top', legend.text = element_text(size = 7)) +
   guides(colour = guide_legend(ncol = 3)) +
   #scale_colour_manual(values = viridis(4)) +
-  labs(x = 'Raw slurry or liquid fraction DM (%)', y = 'Emission factor (% of TAN)', shape = '', colour = '', lty = '')
-ggsave2x('../plots/separation_3', height = 7.5, width = 5)
+  labs(x = 'Raw slurry or liquid fraction DM (%)', y = 'Emission factor (% of TAN)', colour = '')
+ggsave2x('../plots/separation_3', height = 6.5, width = 5)
 
 # What needs to be done: 
 # Are any of these plots informative at all? Shows that the end DM or relative change in DM is not enough to predict reduction efficiency. 
