@@ -6,7 +6,7 @@ sid,descrip,app.mthd,man.source,man.dm,man.ph,app.rate,incorp,time.incorp,air.te
 02-aii,Trailing shoe,Trailing shoe,Cattle,6,7.3,40,none,,14,2,1.41,0.1,168,0.3,0.6
 03-b,Open slot injection,Open slot injection,Cattle,6,7.3,40,none,,14,2,1.41,0.1,168,0.7,0.7
 04-c,Closed slot injection,Closed slot injection,Cattle,6,7.3,40,none,,14,2,1.41,0.1,168,0.8,0.9
-05-new1,Liquid frac sep,Broadcast,Cattle,3,7.3,40,none,,14,2,1.41,0.1,168,,
+05-new1,Liquid frac sep,Broadcast,Cattle,3.3,7.3,40,none,,14,2,1.41,0.1,168,,
 06-e,Dilution,Broadcast,Cattle,3,7.3,40,none,,14,2,1.41,0.1,168,0.3,0.3
 07-new2,Acidified,Broadcast,Cattle,6,5.9,40,none,,14,2,1.41,0.1,168,,
 08-di,Deep incorp quick,Broadcast,Cattle,6,7.3,40,deep,0.167,14,2,1.41,0.1,168,0.9,0.9
