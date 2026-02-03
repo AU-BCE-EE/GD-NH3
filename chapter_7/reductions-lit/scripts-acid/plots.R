@@ -44,7 +44,7 @@ ggplot(df, aes(pHr, r)) +
   guides(colour = guide_legend(ncol = 3)) +
   xlab('Change in pH due to acidification') + ylab('Emission reduction due to acidification (%)') +
   theme(legend.title = element_blank(), legend.text = element_text(size = 7))
-ggsave2x('../plots/acid_4', height = 6.5, width = 5)
+ggsave2x('../plots/acid_4', height = 6.2, width = 5)
 
 # What needs to be done: 
 # Combining figures with one legend. 
