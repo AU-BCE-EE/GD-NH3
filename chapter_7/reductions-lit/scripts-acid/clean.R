@@ -21,3 +21,5 @@ df2[, ref := gsub('([0-9ab])$', '\\1)', ref)]
 # And remove commas
 df1[, study := gsub(',', '', study)]
 df2[, ref := gsub(',', '', ref)]
+
+
