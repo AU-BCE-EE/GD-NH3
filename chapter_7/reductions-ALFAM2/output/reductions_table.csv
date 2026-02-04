@@ -6,12 +6,12 @@ group,lwr,rred,upr,val
 04-c closed slot injection cattle,79,90,98,"90 [79, 98]"
 05-new1 liquid frac sep cattle,20,38,48,"38 [20, 48]"
 06-e dilution cattle,22,42,52,"42 [22, 52]"
-07-new2 acidified cattle,1,45,59,"45 [1, 59]"
+07-new2 acidified cattle,1,42,58,"42 [1, 58]"
 08-di deep incorp quick cattle,92,93,96,93
 09-dii shallow incorp quick cattle,48,60,69,60
 10-diii deep incorp 4 h cattle,60,70,92,70
 11-div deep incorp 24 h cattle,10,20,71,20
-comb1 trailing shoe + acid cattle,57,76,85,"76 [57, 85]"
-comb2 dilution + acid cattle,37,65,72,"65 [37, 72]"
+comb1 trailing shoe + acid cattle,55,75,84,"75 [55, 84]"
+comb2 dilution + acid cattle,36,63,71,"63 [36, 71]"
 comb3 trailing shoe + dilution cattle,44,64,77,"64 [44, 77]"
 comb4 trailing hose + dilution cattle,37,62,71,"62 [37, 71]"

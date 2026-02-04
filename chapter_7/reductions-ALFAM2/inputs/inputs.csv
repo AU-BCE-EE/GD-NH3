@@ -8,7 +8,7 @@ sid,descrip,app.mthd,man.source,man.dm,man.ph,app.rate,incorp,time.incorp,air.te
 04-c,Closed slot injection,Closed slot injection,Cattle,6,7.3,40,none,,13,1.9,1.38,0,168,0.8,0.9
 05-new1,Liquid frac sep,Broadcast,Cattle,3.3,7.3,40,none,,13,1.9,1.38,0,168,,
 06-e,Dilution,Broadcast,Cattle,3,7.3,40,none,,13,1.9,1.38,0,168,0.3,0.3
-07-new2,Acidified,Broadcast,Cattle,6,5.9,40,none,,13,1.9,1.38,0,168,,
+07-new2,Acidified,Broadcast,Cattle,6,6,40,none,,13,1.9,1.38,0,168,,
 08-di,Deep incorp quick,Broadcast,Cattle,6,7.3,40,deep,0.167,13,1.9,1.38,0,168,0.9,0.9
 09-dii,Shallow incorp quick,Broadcast,Cattle,6,7.3,40,shallow,0.167,13,1.9,1.38,0,168,0.7,0.7
 10-diii,Deep incorp 4 h,Broadcast,Cattle,6,7.3,40,deep,2,13,1.9,1.38,0,168,0.45,0.65
@@ -25,7 +25,7 @@ sid,descrip,app.mthd,man.source,man.dm,man.ph,app.rate,incorp,time.incorp,air.te
 09-dii,Shallow incorp quick,Broadcast,Pig,3.9,7.5,40,shallow,0.167,13,1.9,1.38,0,168,0.7,0.7
 10-diii,Deep incorp 4 h,Broadcast,Pig,3.9,7.5,40,deep,2,13,1.9,1.38,0,168,0.45,0.65
 11-div,Deep incorp 24 h,Broadcast,Pig,3.9,7.5,40,deep,12,13,1.9,1.38,0,168,0.3,0.3
-comb1,Trailing shoe + acid,Trailing shoe,Cattle,6,5.9,40,none,,13,1.9,1.38,0,168,,
-comb2,Dilution + acid,Broadcast,Cattle,3,5.9,40,none,,13,1.9,1.38,0,168,,
+comb1,Trailing shoe + acid,Trailing shoe,Cattle,6,6,40,none,,13,1.9,1.38,0,168,,
+comb2,Dilution + acid,Broadcast,Cattle,3,6,40,none,,13,1.9,1.38,0,168,,
 comb3,Trailing shoe + dilution,Trailing shoe,Cattle,3,7.3,40,none,,13,1.9,1.38,0,168,,
 comb4,Trailing hose + dilution,Trailing hose,Cattle,3,7.3,40,none,,13,1.9,1.38,0,168,,
